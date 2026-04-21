@@ -1,0 +1,64 @@
+from django.db import models
+
+# Create your models here.
+class CompanyInfo(models.Model):
+    # Dane firmy
+    name = models.CharField(max_length=100, verbose_name="Nazwa firmy")
+    description = models.TextField(verbose_name="Opis firmy")
+    logo = models.ImageField(upload_to='company/', verbose_name="Logo firmy", blank=True, null=True)
+    
+    # Dane kontaktowe i prawne (ważne dla rynku niemieckiego)
+    address = models.TextField(verbose_name="Adres")
+    phone = models.CharField(max_length=20, verbose_name="Telefon")
+    email = models.EmailField(verbose_name="Email kontaktowy")
+    ust_id = models.CharField(max_length=50, verbose_name="USt-IdNr (NIP)")
+    
+    # Social Media
+    facebook_url = models.URLField(blank=True, null=True, verbose_name="Link do Facebooka")
+    instagram_url = models.URLField(blank=True, null=True, verbose_name="Link do Instagrama")
+    treatwell_url = models.URLField(blank=True, null=True, verbose_name="Link do Treatwell")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Dane firmy"
+        verbose_name_plural = "Dane firmy"
+
+class Service(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Nazwa usługi")
+    description = models.TextField(verbose_name="Opis zabiegu")
+    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena (€)")
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Usługa"
+        verbose_name_plural = "Usługi"
+
+class Post(models.Model):
+    title = models.CharField(max_length=200, verbose_name="Tytuł posta")
+    description = models.TextField(verbose_name="Opis")
+    image = models.ImageField(upload_to='treatments/', verbose_name="Zdjęcie", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data utworzenia posta")
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Post"
+        verbose_name_plural = "Posty"
+    
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Imię")
+    email = models.EmailField(verbose_name="Email")
+    message = models.TextField(verbose_name="Wiadomość")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data wysłania")
+
+    def __str__(self):
+        return f"Wiadomość od {self.name}"
+
+    class Meta:
+        verbose_name = "Formularz kontaktowy"
+        verbose_name_plural = "Zgłoszenia z formularza kontaktowego"
