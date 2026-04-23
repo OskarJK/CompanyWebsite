@@ -12,14 +12,14 @@ class CompanyInfoAdmin(admin.ModelAdmin):
     
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'price',]
+    list_display = ['id', 'title', 'description', 'price',]
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'created_at',]
-    list_filter = ['created_at']
-    
+    list_display = ['id', 'name', 'email', 'created_at', 'status']
+    list_filter = ['created_at', 'status']
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'created_at',]
+    list_display = ['id', 'title', 'description', 'created_at',]
     list_filter = ['created_at',]

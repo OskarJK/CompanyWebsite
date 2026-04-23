@@ -49,12 +49,17 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Posty"
-    
+CONTACTMESSAGE_STATUS_CHOICES = [
+    ('new', 'Nowa'),
+    ('in_progress', 'W trakcie realizacji'),
+    ('closed', 'Zamknięta'),    
+]
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100, verbose_name="Imię")
     email = models.EmailField(verbose_name="Email")
     message = models.TextField(verbose_name="Wiadomość")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data wysłania")
+    status = models.CharField(max_length=20, choices=CONTACTMESSAGE_STATUS_CHOICES, default='new', verbose_name="Status wiadomości")
 
     def __str__(self):
         return f"Wiadomość od {self.name}"

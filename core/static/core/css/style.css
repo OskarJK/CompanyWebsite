@@ -1,0 +1,110 @@
+:root {
+    --primary: #c5a059;       /* Złoty akcent */
+    --bg-powder: #fdf6f4;     /* To jest Twoje pudrowe tło */
+    --text: #5c5c5c;          /* Miękki szary kolor tekstu */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+body { 
+    margin: 0; 
+    font-family: var(--font-body); 
+    color: var(--text); 
+    background-color: var(--bg-powder); /* Zastosowanie pudrowego tła */
+}
+
+/* --- HERO SECTION --- */
+#hero {
+    /* Ustawiamy minimalną wysokość sekcji, żeby tło miało się gdzie pokazać */
+    min-height: 80vh; 
+    
+    /* Kluczowe parametry tła */
+    background-size: cover;          /* Zdjęcie wypełnia całą sekcję */
+    background-position: center;     /* Zdjęcie wycentrowane */
+    background-repeat: no-repeat;    /* Nie powtarzamy zdjęcia */
+    
+    /* Centrowanie treści (napisu) na zdjęciu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    background: rgba(255, 255, 255, 0.6); /* Jasna, pudrowa poświata dla czytelności */
+    padding: 60px;
+    border-radius: 10px;
+    max-width: 80%; /* Tekst nie będzie zbyt szeroki */
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+.cta-outline {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+
+.cta-outline:hover { background: var(--primary); color: white; }
+
+/* --- SEKCJE --- */
+#services, #posts { padding: 80px 10%; }
+
+.section-heading {
+    font-family: var(--font-heading);
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+}
+
+/* --- USŁUGI --- */
+.services-list { max-width: 800px; margin: 0 auto; }
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0d0cd; /* Delikatna linia w kolorze tła */
+    font-size: 1.1rem;
+}
+
+.service-price { font-weight: bold; color: var(--primary); }
+
+/* --- KARTY POSTÓW --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card { 
+    background: #ffffff; /* Białe karty na pudrowym tle wyglądają bardzo świeżo */
+    border: none; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card img { width: 100%; height: 250px; object-fit: cover; }
+.card-content { padding: 20px; }
+
+/* --- FOOTER --- */
+footer { 
+    padding: 40px; 
+    text-align: center; 
+    border-top: 1px solid #e0d0cd; 
+    margin-top: 50px; 
+    color: #888;
+}

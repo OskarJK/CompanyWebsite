@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ company.name }}</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="hero" style="background-image: url('{{ company.logo.url }}');">
+        <div class="hero-overlay">
+            <h1 class="hero-title">{{ company.name }}</h1>
+            <p class="hero-subtitle">{{ company.description }}</p>
+            <a href="#services" class="cta-outline">Odkryj usługi</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-heading">Nasza Oferta</h2>
+        <div class="services-list">
+            {% for service in services %}
+                <div class="service-row">
+                    <span class="service-name">{{ service.title }}</span>
+                    <span class="service-price">{{ service.price }} €</span>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="posts">
+        <h2 class="section-heading">Aktualności</h2>
+        <div class="grid-container">
+            {% for post in posts %}
+                <div class="card">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <p>{{ company.name }} | {{ company.email }} | {{ company.phone }}</p>
+    </footer>
+</body>
+</html>
