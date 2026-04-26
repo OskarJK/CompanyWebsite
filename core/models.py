@@ -49,6 +49,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Posty"
+        
 CONTACTMESSAGE_STATUS_CHOICES = [
     ('new', 'Nowa'),
     ('in_progress', 'W trakcie realizacji'),

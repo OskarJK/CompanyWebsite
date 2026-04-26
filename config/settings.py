@@ -106,8 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'de-de' # Ustawienie języka na niemiecki (Niemcy)
-TIME_ZONE = 'Europe/Berlin' # Ustawienie strefy czasowej na Berlin
+# LANGUAGE_CODE = 'de-de' # Ustawienie języka na niemiecki (Niemcy)
+# TIME_ZONE = 'Europe/Berlin' # Ustawienie strefy czasowej na Berlin
+LANGUAGE_CODE = 'pl-pl' # Ustawienie języka na polski (Polska)
+TIME_ZONE = 'Europe/Warsaw' # Ustawienie strefy czasowej na Warszawa
 
 USE_I18N = True
 
