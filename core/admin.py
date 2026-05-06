@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CompanyInfo, Service, Post, ContactMessage
+from .models import Category, CompanyInfo, Service, Post, ContactMessage
 
 # Register your models here.
 
@@ -12,7 +12,8 @@ class CompanyInfoAdmin(admin.ModelAdmin):
     
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'price',]
+    list_display = ['id', 'title', 'description', 'price', 'category']
+    list_filter = ['category']
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -23,3 +24,9 @@ class ContactMessageAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'description', 'created_at',]
     list_filter = ['created_at',]
+    
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name',]
+    
+

@@ -24,11 +24,22 @@ class CompanyInfo(models.Model):
     class Meta:
         verbose_name = "Dane firmy"
         verbose_name_plural = "Dane firmy"
+        
+class Category(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Nazwa kategorii")
 
+    class Meta:
+        verbose_name = "Kategoria"
+        verbose_name_plural = "Kategorie"
+
+    def __str__(self):
+        return self.name
+    
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nazwa usługi")
     description = models.TextField(verbose_name="Opis zabiegu")
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena (€)")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoria", null=True, blank=True)
 
     def __str__(self):
         return self.title
