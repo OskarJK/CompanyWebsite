@@ -41,7 +41,51 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     margin-bottom: 20px;
-    color: #4a4a4a;
+    
+    /* 1. Efekt metalicznego gradientu złota */
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text; /* Kluczowe: wycina tło do kształtu liter */
+    background-clip: text;
+    color: transparent; /* Tekst musi być przeźroczysty, żeby gradient był widoczny */
+    
+    /* 2. Efekt poświaty (delikatna mgiełka wokół napisu) */
+    text-shadow: 0px 0px 15px rgba(197, 160, 89, 0.5);
+}
+
+/* --- IKONY SOCIAL MEDIA (PRAWY GÓRNY RÓG) --- */
+.social-icons {
+    position: fixed; /* Ikony będą "przypięte" do ekranu, nawet przy przewijaniu */
+    top: 20px;       /* Odstęp od góry */
+    right: 20px;     /* Odstęp od prawej */
+    z-index: 1000;   /* Upewnia się, że ikony są zawsze na wierzchu */
+    display: flex;
+    gap: 15px;       /* Odstęp między ikonami */
+    padding: 10px 15px;
+    background: transparent; /* Bardzo przeźroczyste, ciemne tło (śliwka) dla kontrastu na jasnych zdjęciach */
+    border-radius: 50px;              /* Zaokrąglone rogi ("pigułka") */
+    backdrop-filter: blur(5px);       /* Delikatne rozmycie tła pod ikonami (efekt szkła) */
+    border: 1px solid rgba(255,255,255,0.1); /* Prawie niewidoczna biała ramka */
+}
+
+.social-icons a {
+    color: #FDF6F4; /* Kremowa biel - kolor startowy ikon */
+    font-size: 1.5rem; /* Rozmiar ikon */
+    text-decoration: none;
+    transition: all 0.4s ease; /* Płynne przejście wszystkich efektów */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* --- EFEKT PO NAJECHANIU MYSZKĄ (HOVER) --- */
+.social-icons a:hover {
+    color: #ab781a;             /* Zmiana koloru na Twoje złoto */
+    transform: translateY(-3px) scale(1.1); /* Delikatne uniesienie i powiększenie */
+    
+    /* Efekt delikatnej, złotej poświaty wokół samej ikony */
+    text-shadow: 0 0 10px rgba(197, 160, 89, 0.7); 
 }
 
 .cta-outline {
@@ -82,6 +126,21 @@ body {
 
 .service-price { font-weight: bold; color: var(--primary); }
 
+.category-block {
+    margin-bottom: 0px;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
 /* --- KARTY POSTÓW --- */
 .grid-container {
     display: grid;
@@ -90,15 +149,30 @@ body {
 }
 
 .card { 
-    background: #ffffff; /* Białe karty na pudrowym tle wyglądają bardzo świeżo */
+    background: #ffffff; 
     border: none; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border-radius: 8px;
     overflow: hidden;
+    
+    /* TO JEST KLUCZOWE */
+    display: flex; 
+    flex-direction: column; /* Układa elementy w pionie */
+    align-items: center;    /* Wyśrodkowuje elementy w poziomie */
+    text-align: center;     /* Wyśrodkowuje tekst */
 }
 
-.card img { width: 100%; height: 250px; object-fit: cover; }
-.card-content { padding: 20px; }
+.card-content { 
+    padding: 20px; 
+    flex-grow: 1; /* Dzięki temu treść wypełni miejsce, a zdjęcie "przyklei się" do dołu */
+}
+
+.card img { 
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; 
+    margin-top: auto; /* Pomaga docisnąć zdjęcie do dołu karty */
+}
 
 /* --- FOOTER --- */
 footer { 
