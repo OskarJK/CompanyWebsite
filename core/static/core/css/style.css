@@ -1,91 +1,228 @@
 :root {
-    --primary: #c5a059;       /* Złoty akcent */
-    --bg-powder: #fdf6f4;     /* To jest Twoje pudrowe tło */
-    --text: #5c5c5c;          /* Miękki szary kolor tekstu */
+    --primary: #c5a059;
+    --primary-dark: #ab781a;
+    --bg-powder: #fdf6f4;
+    --text: #5c5c5c;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
 }
 
-body { 
-    margin: 0; 
-    font-family: var(--font-body); 
-    color: var(--text); 
-    background-color: var(--bg-powder); /* Zastosowanie pudrowego tła */
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--bg-powder);
+    line-height: 1.6;
 }
 
 /* --- HERO SECTION --- */
 #hero {
-    /* Ustawiamy minimalną wysokość sekcji, żeby tło miało się gdzie pokazać */
-    min-height: 80vh; 
-    
-    /* Kluczowe parametry tła */
-    background-size: cover;          /* Zdjęcie wypełnia całą sekcję */
-    background-position: center;     /* Zdjęcie wycentrowane */
-    background-repeat: no-repeat;    /* Nie powtarzamy zdjęcia */
-    
-    /* Centrowanie treści (napisu) na zdjęciu */
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 80px 20px;
 }
 
 .hero-overlay {
-    background: rgba(255, 255, 255, 0.6); /* Jasna, pudrowa poświata dla czytelności */
-    padding: 60px;
-    border-radius: 10px;
-    max-width: 80%; /* Tekst nie będzie zbyt szeroki */
+    background: transparent;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-flower-container {
+    width: 100%;
+    margin-bottom: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-flower-img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(197, 160, 89, 0.2));
 }
 
 .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    
-    /* 1. Efekt metalicznego gradientu złota */
-    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    -webkit-background-clip: text; /* Kluczowe: wycina tło do kształtu liter */
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    margin: 20px 0;
+    line-height: 1.1;
+    padding-bottom: 0.1em;
+    background-image: linear-gradient(
+    to right,
+        #462523 0%,
+        #cb9b51 22%,
+        #f6e27a 45%,
+        #f7f090 50%,
+        #f6e27a 55%,
+        #cb9b51 78%,
+        #462523 100%
+    );
+    -webkit-background-clip: text;
     background-clip: text;
-    color: transparent; /* Tekst musi być przeźroczysty, żeby gradient był widoczny */
-    
-    /* 2. Efekt poświaty (delikatna mgiełka wokół napisu) */
-    text-shadow: 0px 0px 15px rgba(197, 160, 89, 0.5);
+    color: transparent;
 }
 
-/* --- IKONY SOCIAL MEDIA (PRAWY GÓRNY RÓG) --- */
+.hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+/* --- SOCIAL MEDIA --- */
 .social-icons {
-    position: fixed; /* Ikony będą "przypięte" do ekranu, nawet przy przewijaniu */
-    top: 20px;       /* Odstęp od góry */
-    right: 20px;     /* Odstęp od prawej */
-    z-index: 1000;   /* Upewnia się, że ikony są zawsze na wierzchu */
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
     display: flex;
-    gap: 15px;       /* Odstęp między ikonami */
+    gap: 20px;
     padding: 10px 15px;
-    background: transparent; /* Bardzo przeźroczyste, ciemne tło (śliwka) dla kontrastu na jasnych zdjęciach */
-    border-radius: 50px;              /* Zaokrąglone rogi ("pigułka") */
-    backdrop-filter: blur(5px);       /* Delikatne rozmycie tła pod ikonami (efekt szkła) */
-    border: 1px solid rgba(255,255,255,0.1); /* Prawie niewidoczna biała ramka */
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
 }
 
 .social-icons a {
-    color: #FDF6F4; /* Kremowa biel - kolor startowy ikon */
-    font-size: 1.5rem; /* Rozmiar ikon */
-    text-decoration: none;
-    transition: all 0.4s ease; /* Płynne przejście wszystkich efektów */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+    color: var(--primary);
+    font-size: 1.5rem;
+    transition: 0.3s ease;
 }
 
-/* --- EFEKT PO NAJECHANIU MYSZKĄ (HOVER) --- */
 .social-icons a:hover {
-    color: #ab781a;             /* Zmiana koloru na Twoje złoto */
-    transform: translateY(-3px) scale(1.1); /* Delikatne uniesienie i powiększenie */
-    
-    /* Efekt delikatnej, złotej poświaty wokół samej ikony */
-    text-shadow: 0 0 10px rgba(197, 160, 89, 0.7); 
+    color: var(--primary-dark);
+    transform: scale(1.2);
+}
+
+/* --- SEKCJE OGÓLNE --- */
+#services, #posts, #contact {
+    padding: 100px 10%;
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.8rem;
+    color: #4a4a4a;
+}
+
+/* --- USŁUGI --- */
+.services-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid #e0d0cd;
+    font-size: 1.1rem;
+}
+
+.service-price {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 8px;
+    width: 100%;
+}
+
+/* --- KARTY POSTÓW --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-content {
+    padding: 30px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+/* --- KONTAKT --- */
+.contact-container {
+    max-width: 650px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--bg-powder);
+}
+
+#contact form p {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact label {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #e0d0cd;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    background-color: var(--bg-powder);
+    color: var(--text);
+    transition: 0.3s;
+    outline: none;
+    /* Blokada rozmiaru pola tekstowego, aby zachować estetykę projektu. Użytkownicy mogą nadal przewijać zawartość, ale nie mogą zmieniać rozmiaru pola. */
+    resize: none;
+}
+
+#contact input:focus, #contact textarea:focus {
+    border-color: var(--primary);
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.1);
 }
 
 .cta-outline {
@@ -97,88 +234,34 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.3s;
-}
-
-
-.cta-outline:hover { background: var(--primary); color: white; }
-
-/* --- SEKCJE --- */
-#services, #posts { padding: 80px 10%; }
-
-.section-heading {
-    font-family: var(--font-heading);
     text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-    color: #4a4a4a;
+    background: transparent;
+
+    /*Wyśrodkowanie przycisku*/
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    font-family: var(--font-body);
 }
 
-/* --- USŁUGI --- */
-.services-list { max-width: 800px; margin: 0 auto; }
-
-.service-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
-    border-bottom: 1px solid #e0d0cd; /* Delikatna linia w kolorze tła */
-    font-size: 1.1rem;
-}
-
-.service-price { font-weight: bold; color: var(--primary); }
-
-.category-block {
-    margin-bottom: 0px;
-}
-
-.category-title {
-    font-family: var(--font-heading);
-    color: var(--primary);
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primary);
-    display: inline-block;
-    padding-bottom: 5px;
-    width: 100%;
-}
-
-/* --- KARTY POSTÓW --- */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card { 
-    background: #ffffff; 
-    border: none; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    overflow: hidden;
-    
-    /* TO JEST KLUCZOWE */
-    display: flex; 
-    flex-direction: column; /* Układa elementy w pionie */
-    align-items: center;    /* Wyśrodkowuje elementy w poziomie */
-    text-align: center;     /* Wyśrodkowuje tekst */
-}
-
-.card-content { 
-    padding: 20px; 
-    flex-grow: 1; /* Dzięki temu treść wypełni miejsce, a zdjęcie "przyklei się" do dołu */
-}
-
-.card img { 
-    width: 100%; 
-    height: 250px; 
-    object-fit: cover; 
-    margin-top: auto; /* Pomaga docisnąć zdjęcie do dołu karty */
+.cta-outline:hover {
+    background: var(--primary);
+    color: white;
 }
 
 /* --- FOOTER --- */
-footer { 
-    padding: 40px; 
-    text-align: center; 
-    border-top: 1px solid #e0d0cd; 
-    margin-top: 50px; 
-    color: #888;
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #e0d0cd;
+    background: white;
+    color: #aaa;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.6rem; }
+    .hero-flower-img { max-width: 100%; }
+    .section-heading { font-size: 2.2rem; }
+    #services, #posts, #contact { padding: 60px 5%; }
 }

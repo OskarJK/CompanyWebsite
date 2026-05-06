@@ -1,1 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Środowisko wirtualne
 env/
+venv/
+ENV/
+
+# Plik konfiguracyjny (Hasła i klucze)
+.env
+
+# Python
+__pycache__/
+*.pyc

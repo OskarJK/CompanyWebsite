@@ -11,16 +11,7 @@
 <body>
 
     <section id="hero">
-        <div class="hero-overlay">
-            <h1 class="hero-title">{{ company.name }}</h1>
-            <p class="hero-subtitle">{{ company.description }}</p>
-            <a href="#services" class="cta-outline">Odkryj usługi</a>
-        </div>
-        {% if company.logo %}
-        <div class="hero-flower-container">
-            <img src="{{ company.logo.url }}" class="hero-flower-img" alt="Orchidea Dekoracja">
-        </div>
-        {% endif %}
+        
         <div class="social-icons">
             {% if company.facebook_url %}
                 <a href="{{ company.facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -28,6 +19,22 @@
             {% if company.instagram_url %}
                 <a href="{{ company.instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             {% endif %}
+        </div>
+
+        <div class="hero-overlay">
+            
+            {% if company.logo %}
+            <div class="hero-flower-container">
+                <img src="{{ company.logo.url }}" class="hero-flower-img" alt="Orchidea Gold">
+            </div>
+            {% endif %}
+
+            <h1 class="hero-title">{{ company.name }}</h1>
+
+            <p class="hero-subtitle">{{ company.description }}</p>
+
+            <a href="#services" class="cta-outline">Odkryj usługi</a>
+
         </div>
     </section>
 
@@ -65,11 +72,11 @@
     <section id="contact">
         <h2 class="section-heading">Masz pytania? Napisz do nas</h2>
         
-        <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <div class="contact-container">
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="cta-outline" style="width: 100%; cursor: pointer;">Wyślij wiadomość</button>
+                <button type="submit" class="cta-outline">Wyślij wiadomość</button>
             </form>
         </div>
     </section>
