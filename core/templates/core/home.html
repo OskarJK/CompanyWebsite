@@ -9,16 +9,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar">
+        <a href="#hero">Home</a>
+        <a href="#services">Usługi</a>
+        <a href="#posts">Aktualności</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
 
     <section id="hero">
         
         <div class="social-icons">
+
+            {% if company.treatwell_url %}
+                 <a href="{{ company.treatwell_url }}" target="_blank" class="cta-treatwell">
+                 <i class="fa-solid fa-calendar-check"></i> Umów wizytę
+                 </a>
+            {% endif %}
+
             {% if company.facebook_url %}
                 <a href="{{ company.facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
             {% endif %}
+
             {% if company.instagram_url %}
                 <a href="{{ company.instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             {% endif %}
+
         </div>
 
         <div class="hero-overlay">
@@ -45,6 +60,7 @@
             {% for service in services %}
                 <div class="service-row">
                     <span class="service-name">{{ service.title }}</span>
+                    <span class="service-description">{{ service.description }}</span>
                     <span class="service-price">{{ service.price }} €</span>
                 </div>
             {% endfor %}
@@ -82,7 +98,23 @@
     </section>
 
     <footer>
-        <p>{{ company.phone }} | {{ company.email }} | {{ company.address }} | {{ company.ust_id }}</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <!-- 1. Numer telefonu -->
+                <span><i class="fa-solid fa-phone"></i> {{ company.phone }}</span>
+                
+                <!-- 2. Adres mailowy -->
+                <span><i class="fa-solid fa-envelope"></i> {{ company.email }}</span>
+                
+                <!-- 3. Adres firmy -->
+                <span><i class="fa-solid fa-location-dot"></i> {{ company.address }}</span>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 {{ company.name }} | NIP: {{ company.ust_id }}</p>
+            </div>
+        </div>
     </footer>
+    
 </body>
 </html>

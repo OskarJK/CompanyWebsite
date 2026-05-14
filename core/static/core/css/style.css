@@ -1,3 +1,41 @@
+/* --- GŁÓWNA NAWIGACJA --- */
+html {
+    scroll-behavior: smooth; /* Płynne przewijanie */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px 0;
+    background: transparent;
+    z-index: 2000;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #462523;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+section {
+    scroll-margin-top: 40px; 
+}
+
 :root {
     --primary: #c5a059;
     --primary-dark: #ab781a;
@@ -11,7 +49,11 @@ body {
     margin: 0;
     font-family: var(--font-body);
     color: var(--text);
-    background-color: var(--bg-powder);
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     line-height: 1.6;
 }
 
@@ -80,10 +122,12 @@ body {
 /* --- SOCIAL MEDIA --- */
 .social-icons {
     position: fixed;
-    top: 25px;
+    top: 90px;
     right: 25px;
     z-index: 1000;
     display: flex;
+    align-items: center;
+    line-height: 0;
     gap: 20px;
     padding: 10px 15px;
     background: rgba(255, 255, 255, 0.4);
@@ -102,9 +146,40 @@ body {
     transform: scale(1.2);
 }
 
+/* Styl dla przycisku Treatwell */
+.cta-treatwell {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    margin-top: 0;
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    color: #462523 !important;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.2rem !important;
+    border-radius: 25px;
+    transition: 0.3s ease;
+    font-family: var(--font-body);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cta-treatwell:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
+    filter: brightness(1.1);
+}
+
+.cta-treatwell i {
+    margin-right: 6px;
+    font-size: 1.1rem;
+}
+
 /* --- SEKCJE OGÓLNE --- */
 #services, #posts, #contact {
-    padding: 100px 10%;
+    padding: 50px 10%;
 }
 
 .section-heading {
@@ -115,34 +190,68 @@ body {
     color: #4a4a4a;
 }
 
-/* --- USŁUGI --- */
+/* --- USŁUGI (KAFELKI) --- */
 .services-list {
-    max-width: 800px;
+    max-width: 850px; /* Nieco szersze dla lepszego balansu */
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Odstęp między kafelkami */
 }
 
 .service-row {
     display: flex;
     justify-content: space-between;
-    padding: 22px 0;
-    border-bottom: 1px solid #e0d0cd;
-    font-size: 1.1rem;
+    align-items: center;
+    padding: 20px 30px;
+    background: #fff; /* Białe tło kafelka */
+    border-radius: 12px; /* Zaokrąglone rogi */
+    border: 1px solid rgba(191, 149, 63, 0.1); /* Bardzo delikatna złota obramówka */
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); /* Ledwo widoczny cień */
+}
+
+/* EFEKT NAJAZDU KURSORA */
+.service-row:hover {
+    transform: translateY(-3px); /* Lekkie uniesienie */
+    background: #fdfaf4; /* Bardzo delikatna zmiana koloru tła */
+    border-color: var(--primary); /* Złota obramówka staje się wyraźniejsza */
+    box-shadow: 0 8px 20px rgba(191, 149, 63, 0.12); /* Złoty cień */
+}
+
+.service-name {
+    font-weight: 500;
+    color: #462523; /* Twój ciemny brąz */
+    flex: 1;
+}
+
+.service-description {
+    color: #888;
+    font-size: 0.9rem;
+    padding: 0 20px;
+    font-style: italic;
+    flex: 2;
+    text-align: center;
 }
 
 .service-price {
     font-weight: bold;
     color: var(--primary);
+    font-size: 1.2rem;
+    flex: 1;
+    text-align: right;
 }
 
+/* Poprawka dla tytułu sekcji, aby pasował do stylu */
 .category-title {
-    font-family: var(--font-heading);
+    font-family: var(--font-header);
     color: var(--primary);
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--primary);
-    display: inline-block;
-    padding-bottom: 8px;
-    width: 100%;
+    margin: 40px 0 20px 0;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* --- KARTY POSTÓW --- */
@@ -207,6 +316,7 @@ body {
 
 #contact input, #contact textarea {
     width: 100%;
+    box-sizing: border-box;
     padding: 16px;
     border: 1px solid #e0d0cd;
     border-radius: 10px;
@@ -251,11 +361,47 @@ body {
 
 /* --- FOOTER --- */
 footer {
-    padding: 60px 20px;
+    padding: 80px 20px 40px 20px;
     text-align: center;
-    border-top: 1px solid #e0d0cd;
-    background: white;
-    color: #aaa;
+    /* Usuwamy białe tło na rzecz przezroczystości lub bardzo delikatnego kremu */
+    background: rgba(255, 252, 249, 0.6); 
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(191, 149, 63, 0.2);
+    color: #462523; /* Twój ciemny brąz */
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.footer-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-info i {
+    color: var(--primary); /* Złote ikonki */
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(70, 37, 35, 0.1);
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 1px;
 }
 
 /* --- RESPONSYWNOŚĆ --- */
