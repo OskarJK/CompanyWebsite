@@ -1,39 +1,7 @@
 /* --- GŁÓWNA NAWIGACJA --- */
+
 html {
-    scroll-behavior: smooth; /* Płynne przewijanie */
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 30px 0;
-    background: transparent;
-    z-index: 2000;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #462523;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    transition: 0.3s;
-}
-
-.navbar a:hover {
-    color: var(--primary);
-    transform: translateY(-2px);
-}
-
-section {
-    scroll-margin-top: 40px; 
+    scroll-behavior: smooth !important;
 }
 
 :root {
@@ -57,77 +25,52 @@ body {
     line-height: 1.6;
 }
 
-/* --- HERO SECTION --- */
-#hero {
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero-overlay {
-    background: transparent;
-    max-width: 900px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hero-flower-container {
-    width: 100%;
-    margin-bottom: -40px;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-flower-img {
-    max-width: 800px;
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0px 10px 20px rgba(197, 160, 89, 0.2));
-}
-
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: 3.8rem;
-    margin: 20px 0;
-    line-height: 1.1;
-    padding-bottom: 0.1em;
-    background-image: linear-gradient(
-    to right,
-        #462523 0%,
-        #cb9b51 22%,
-        #f6e27a 45%,
-        #f7f090 50%,
-        #f6e27a 55%,
-        #cb9b51 78%,
-        #462523 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text);
-    max-width: 700px;
-    margin-bottom: 40px;
-}
-
-/* --- SOCIAL MEDIA --- */
-.social-icons {
+/* --- GŁÓWNA NAWIGACJA --- */
+.navbar {
     position: fixed;
-    top: 90px;
-    right: 25px;
-    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Wyśrodkowuje menu główne */
+    align-items: center;     /* Wyrównuje w pionie menu i ikony */
+    padding: 30px 0;
+    background: transparent;
+    z-index: 2000;
+    box-sizing: border-box;
+}
+
+.navbar a {
+
+    text-decoration: none;
+    color: #462523;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+
+.navbar a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+} 
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+/* --- SOCIAL MEDIA (Wewnątrz Navbaru) --- */
+.social-icons {
+    position: absolute;      
+    right: 25px;             
+    top: 50%;                
+    transform: translateY(-50%); 
     display: flex;
     align-items: center;
-    line-height: 0;
     gap: 20px;
     padding: 10px 15px;
     background: rgba(255, 255, 255, 0.4);
@@ -157,7 +100,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     text-transform: uppercase;
-    font-size: 1.2rem !important;
+    font-size: 0.9rem !important;
     border-radius: 25px;
     transition: 0.3s ease;
     font-family: var(--font-body);
@@ -177,6 +120,92 @@ body {
     font-size: 1.1rem;
 }
 
+section {
+    scroll-margin-top: 40px; 
+}
+
+
+/* --- HERO SECTION --- */
+#hero {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-overlay {
+    background: transparent;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-overlay .cta-outline {
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+/* .hero-flower-container {
+    width: 100%;
+    margin-bottom: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-flower-img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(197, 160, 89, 0.2));
+} */
+
+.hero-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    font-weight: 400;
+    margin: 20px 0;
+    line-height: 1.1;
+    padding-bottom: 0.1em;
+    background-image: linear-gradient(
+    to right,
+        #462523 0%,
+        #cb9b51 22%,
+        #f6e27a 45%,
+        #f7f090 50%,
+        #f6e27a 55%,
+        #cb9b51 78%,
+        #462523 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-logo {
+    max-width: 800px;
+    height: auto;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
 /* --- SEKCJE OGÓLNE --- */
 #services, #posts, #contact {
     padding: 50px 10%;
@@ -192,11 +221,11 @@ body {
 
 /* --- USŁUGI (KAFELKI) --- */
 .services-list {
-    max-width: 850px; /* Nieco szersze dla lepszego balansu */
+    max-width: 850px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Odstęp między kafelkami */
+    gap: 15px;
 }
 
 .service-row {
@@ -245,7 +274,7 @@ body {
 
 /* Poprawka dla tytułu sekcji, aby pasował do stylu */
 .category-title {
-    font-family: var(--font-header);
+    font-family: var(--font-heading);
     color: var(--primary);
     text-align: center;
     margin: 40px 0 20px 0;
@@ -336,7 +365,7 @@ body {
 }
 
 .cta-outline {
-    display: inline-block;
+    display: block;
     padding: 15px 40px;
     border: 1px solid var(--primary);
     color: var(--primary);
@@ -346,9 +375,6 @@ body {
     transition: 0.3s;
     text-align: center;
     background: transparent;
-
-    /*Wyśrodkowanie przycisku*/
-    display: block;
     width: fit-content;
     margin: 0 auto;
     font-family: var(--font-body);
@@ -377,9 +403,10 @@ footer {
 
 .footer-info {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
+    gap: 15px;
     margin-bottom: 30px;
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -388,11 +415,14 @@ footer {
 .footer-info span {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
 .footer-info i {
-    color: var(--primary); /* Złote ikonki */
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
 }
 
 .footer-bottom {
