@@ -37,6 +37,10 @@
             {% if company.instagram_url %}
                 <a href="{{ company.instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             {% endif %}
+
+            {% if company.whatsapp_url %}
+                <a href="{{ company.whatsapp_url }}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            {% endif %}
         </div>
     </nav>
 
@@ -65,26 +69,77 @@
 
 
     <section id="services">
-        <h2 class="section-heading">Nasza Oferta</h2>
-        <div class="services-list">
+        <h2 class="section-heading">Nasze Usługi</h2>
+        <p class="section-subheading">Odkryj luksus i profesjonalną pielęgnację</p>
+        
+        <div class="services-grid">
             {% for service in services %}
-                <div class="service-row">
-                    <span class="service-name">{{ service.title }}</span>
-                    <span class="service-description">{{ service.description }}</span>
-                    <span class="service-price">{{ service.price }} €</span>
+                <div class="service-card open-modal" 
+                    data-title="{{ service.title }}" 
+                    data-description="{{ service.description }}" 
+                    data-price="{{ service.price }} €"
+                    data-image="{% if service.image %}{{ service.image.url }}{% else %}{% static 'core/img/default-treatment.jpg' %}{% endif %}">
+                    
+                    <div class="service-card-image">
+                        {% if service.image %}
+                            <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                        {% else %}
+                            <img src="{% static 'core/img/default-treatment.jpg' %}" alt="Usługa">
+                        {% endif %}
+                    </div>
+
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">{{ service.title }}</h3>
+                        
+                        <div class="service-card-text-container">
+                            <p class="service-card-text">{{ service.description }}</p>
+                            <span class="more-link">więcej</span>
+                        </div>
+                        
+                        <div class="service-card-footer">
+                            <span class="service-card-price">{{ service.price }} €</span>
+                            {% if company.treatwell_url %}
+                                <a href="{{ company.treatwell_url }}" target="_blank" class="service-card-btn" onclick="event.stopPropagation();">Umów wizytę</a>
+                            {% else %}
+                                <a href="#contact" class="service-card-btn" onclick="event.stopPropagation();">Kontakt</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
+        </div>
+
+        <div id="serviceModal" class="modal-overlay">
+            <div class="modal-card">
+                <button class="modal-close-btn">&times;</button>
+                <div class="modal-image-box">
+                    <img id="modalImage" src="" alt="Usługa">
+                </div>
+                <div class="modal-content-box">
+                    <h3 id="modalTitle">Nazwa Usługi</h3>
+                    <div class="modal-scroll-desc">
+                        <p id="modalDescription">Pełny opis usługi...</p>
+                    </div>
+                    <div class="modal-footer-box">
+                        <span id="modalPrice">0,00 €</span>
+                        <a href="{% if company.treatwell_url %}{{ company.treatwell_url }}{% else %}#contact{% endif %}" 
+                        id="modalActionBtn" 
+                        target="_blank" 
+                        class="service-card-btn">Umów wizytę</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="posts">
-        <h2 class="section-heading">Aktualności</h2>
+        <h2 class="section-heading">Kosmetyki których używamy</h2>
         <div class="grid-container">
             {% for post in posts %}
                 <div class="card">
                     <div class="card-content">
                         <h3>{{ post.title }}</h3>
-                        <p>{{ post.description }}</p>
+                        <p>{{ post.description|safe }}</p>
                     </div>
                     
                     {% if post.image %}
@@ -126,5 +181,7 @@
         </div>
     </footer>
     
+
+    <script src="{% static 'core/js/main.js' %}"></script>
 </body>
 </html>

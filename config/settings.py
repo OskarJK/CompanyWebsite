@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Własne
     'core',
+    'django_ckeditor_5',
     
     
 ]
@@ -124,3 +125,42 @@ STATIC_URL = '/static/'
 # Media files (dla zdjęć wgranych przez admina)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Konfiguracja CKEditor 5
+CKEDITOR_5_CONFIGS = {
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote'
+        ],
+        'toolbar': [
+            'heading',
+            '|',
+            'bold', 'italic', 'underline', 'strikethrough',
+            '|',
+            'bulletedList', 'numberedList', 'todoList',
+            '|',
+            'outdent', 'indent',
+            '|',
+            'link', 'blockQuote', 'insertTable',
+            '|',
+            'undo', 'redo'
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageStyle:alignLeft', 'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side']
+        },
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Akapit', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Nagłówek 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Nagłówek 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Nagłówek 3', 'class': 'ck-heading_heading3'}
+            ]
+        }
+    }
+}

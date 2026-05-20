@@ -1,4 +1,5 @@
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
 
 # Create your models here.
 class CompanyInfo(models.Model):
@@ -11,11 +12,13 @@ class CompanyInfo(models.Model):
     address = models.TextField(verbose_name="Adres")
     phone = models.CharField(max_length=20, verbose_name="Telefon")
     email = models.EmailField(verbose_name="Email kontaktowy")
-    ust_id = models.CharField(max_length=50, verbose_name="USt-IdNr (NIP)")
+    ust_id = models.CharField(max_length=50, verbose_name="USt-IdNr (NIP)", blank=True, null=True)
+    ust_id_information = models.TextField(verbose_name="Informacje o USt-IdNr (NIP)", blank=True, null=True)
     
     # Social Media
     facebook_url = models.URLField(blank=True, null=True, verbose_name="Link do Facebooka")
     instagram_url = models.URLField(blank=True, null=True, verbose_name="Link do Instagrama")
+    whatsapp_url = models.URLField(blank=True, null=True, verbose_name="Link do WhatsApp")
     treatwell_url = models.URLField(blank=True, null=True, verbose_name="Link do Treatwell")
 
     def __str__(self):
@@ -39,6 +42,7 @@ class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nazwa usługi")
     description = models.TextField(verbose_name="Opis zabiegu")
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena (€)")
+    image = models.ImageField(upload_to='services/', verbose_name="Zdjęcie usługi", blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoria", null=True, blank=True)
 
     def __str__(self):
@@ -50,7 +54,7 @@ class Service(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, verbose_name="Tytuł posta")
-    description = models.TextField(verbose_name="Opis")
+    description = CKEditor5Field('Opis', config_name='extends')
     image = models.ImageField(upload_to='treatments/', verbose_name="Zdjęcie", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data utworzenia posta")
 

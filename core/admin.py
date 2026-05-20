@@ -19,6 +19,15 @@ class ServiceAdmin(admin.ModelAdmin):
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'email', 'created_at', 'status']
     list_filter = ['created_at', 'status']
+    
+    #Blokada edycji wiadomości
+    def get_readonly_fields(self, request, obj=None):
+            if obj:
+                return ['name', 'email', 'message', 'created_at'] 
+            return []
+    #Blokada dodawania nowych wiadomości przez admina
+    def has_add_permission(self, request):
+            return False
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

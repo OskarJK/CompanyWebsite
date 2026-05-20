@@ -219,60 +219,282 @@ section {
     color: #4a4a4a;
 }
 
-/* --- USŁUGI (KAFELKI) --- */
-.services-list {
-    max-width: 850px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* --- USŁUGI: STAŁA WIELKOŚĆ KART I POPUP --- */
+.section-subheading {
+    text-align: center;
+    font-family: var(--font-body);
+    color: #888;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
 }
 
-.service-row {
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* KARTA O STAŁEJ WYSOKOŚCI */
+.service-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(191, 149, 63, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Karta staje się w całości klikalna */
+    height: 460px;   /* GWARANCJA STAŁEJ WYSOKOŚCI DLA KAŻDEJ KARTY */
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(191, 149, 63, 0.12);
+    border-color: var(--primary);
+}
+
+.service-card-image {
+    width: 100%;
+    height: 200px; /* Stała wysokość zdjęcia w karcie */
+    overflow: hidden;
+}
+
+.service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden; /* Odcina wszystko, co wystaje poza sztywne ramy */
+}
+
+.service-card-title {
+    margin: 0 0 10px 0;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #462523;
+}
+
+/* MECHANIZM UCINANIA TEKSTU DO 3 LINIJEK */
+.service-card-text-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.service-card-text {
+    margin: 0;
+    font-family: var(--font-body);
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    
+    /* Magiczne linie CSS ucinające tekst i dające trzy kropki (...) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Maksymalna liczba linii tekstu */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Przycisk 'więcej' pod uciętym tekstem */
+.more-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.service-card:hover .more-link {
+    color: var(--primary-dark);
+}
+
+.service-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
-    background: #fff; /* Białe tło kafelka */
-    border-radius: 12px; /* Zaokrąglone rogi */
-    border: 1px solid rgba(191, 149, 63, 0.1); /* Bardzo delikatna złota obramówka */
-    transition: all 0.3s ease;
-    cursor: default;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); /* Ledwo widoczny cień */
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(70, 37, 35, 0.05);
 }
 
-/* EFEKT NAJAZDU KURSORA */
-.service-row:hover {
-    transform: translateY(-3px); /* Lekkie uniesienie */
-    background: #fdfaf4; /* Bardzo delikatna zmiana koloru tła */
-    border-color: var(--primary); /* Złota obramówka staje się wyraźniejsza */
-    box-shadow: 0 8px 20px rgba(191, 149, 63, 0.12); /* Złoty cień */
-}
-
-.service-name {
-    font-weight: 500;
-    color: #462523; /* Twój ciemny brąz */
-    flex: 1;
-}
-
-.service-description {
-    color: #888;
-    font-size: 0.9rem;
-    padding: 0 20px;
-    font-style: italic;
-    flex: 2;
-    text-align: center;
-}
-
-.service-price {
-    font-weight: bold;
+.service-card-price {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.3rem;
     color: var(--primary);
-    font-size: 1.2rem;
-    flex: 1;
-    text-align: right;
 }
 
-/* Poprawka dla tytułu sekcji, aby pasował do stylu */
+.service-card-btn {
+    background: rgba(255, 255, 255, 0.4);
+    color: #462523;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid rgba(70, 37, 35, 0.15);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.service-card-btn:hover {
+    background: #c4a56b;
+}
+
+/* --- STYLE DLA OKNA MODALNEGO (POPUP) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(146, 136, 135, 0.4); /* Kolor tła poza oknem */
+    backdrop-filter: blur(4px);       /* Efekt rozmycia za oknem */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Klasa aktywująca popup */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(191, 149, 63, 0.15);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+/* Przycisk zamknięcia X */
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 2rem;
+    width: 36px;
+    height: 36px;
+    line-height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    color: #462523;
+    transition: 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.modal-close-btn:hover {
+    background: #462523;
+    color: #ffffff;
+}
+
+.modal-image-box {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.modal-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-content-box {
+    padding: 30px;
+}
+
+#modalTitle {
+    margin: 0 0 15px 0;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #462523;
+}
+
+/* Obszar z opisem – jeśli tekst jest kosmicznie długi, pojawi się wewnątrz mały scroll */
+.modal-scroll-desc {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+    padding-right: 5px;
+}
+
+/* Stylizacja paska przewijania w modalu */
+.modal-scroll-desc::-webkit-scrollbar {
+    width: 4px;
+}
+.modal-scroll-desc::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+#modalDescription {
+    margin: 0;
+    font-family: var(--font-body);
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-line; /* Zachowuje entery wpisane w panelu admina */
+}
+
+.modal-footer-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(70, 37, 35, 0.08);
+    padding-top: 20px;
+}
+
+#modalPrice {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { height: 440px; }
+    .modal-card { width: 95%; }
+}
+
 .category-title {
     font-family: var(--font-heading);
     color: var(--primary);
@@ -291,18 +513,19 @@ section {
 }
 
 .card {
-    background: #ffffff;
+    background: transparent;
+    backdrop-filter: blur(3px);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
 }
 
-.card:hover {
+/* .card:hover {
     transform: translateY(-10px);
-}
+} */
 
 .card-content {
     padding: 30px;
@@ -310,10 +533,33 @@ section {
     text-align: center;
 }
 
-.card img {
+/* .card img {
     width: 100%;
     height: 280px;
     object-fit: cover;
+} */
+
+.card img {
+    width: 15rem;          /* Stała szerokość kółka (możesz zwiększyć np. do 250px jeśli wolisz większe) */
+    height: 15rem;         /* Taka sama wysokość, aby kółko nie było jajowate */
+    object-fit: cover;     /* Idealnie docięcie i wyśrodkowanie grafiki wewnątrz kółka */
+    border-radius: 50%;    /* Magiczna linia, która robi idealne kółko */
+    
+    /* ELEGANCKIE ZDOBIENIE (Pasujące do stylu premium) */
+    border: 2px solid var(--primary); /* Cienka, złota ramka wokół zdjęcia */
+    
+    /* WYŚRODKOWANIE OBRAZKA W KARCIE */
+    margin: 20px auto 0 auto;         /* Górny margines 20px, boki automatycznie (środek), dół 0 */
+    
+    /* SUBTELNY CIEŃ */
+    box-shadow: 0 8px 20px rgba(70, 37, 35, 0.08); /* Miękki, brązowawy cień nadający trójwymiarowości */
+    transition: transform 0.4s ease;
+}
+
+/* Opcjonalny, bardzo elegancki efekt: zdjęcie delikatnie się obraca lub powiększa po najechaniu na kartę */
+.card:hover img {
+    transform: scale(1.04);
+    border-color: var(--primary-dark); /* Złoto lekko ciemnieje przy najechaniu */
 }
 
 /* --- KONTAKT --- */
