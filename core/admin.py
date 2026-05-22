@@ -17,13 +17,13 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'email', 'created_at', 'status']
-    list_filter = ['created_at', 'status']
+    list_display = ['id', 'name', 'email', 'created_at', 'status', 'privacy_accepted']
+    list_filter = ['created_at', 'status', 'privacy_accepted']
     
     #Blokada edycji wiadomości
     def get_readonly_fields(self, request, obj=None):
             if obj:
-                return ['name', 'email', 'message', 'created_at'] 
+                return ['name', 'email', 'message', 'created_at', 'privacy_accepted',] 
             return []
     #Blokada dodawania nowych wiadomości przez admina
     def has_add_permission(self, request):
