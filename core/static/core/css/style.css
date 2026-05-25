@@ -146,7 +146,7 @@ section {
 
 .hero-overlay .cta-outline {
     font-weight: 400;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.442);
     backdrop-filter: blur(2px);
 }
 
@@ -175,8 +175,8 @@ section {
     to right,
         #462523 0%,
         #cb9b51 22%,
-        #f6e27a 45%,
-        #f7f090 50%,
+        #f6db7a 45%,
+        #ffed7b 50%,
         #f6e27a 55%,
         #cb9b51 78%,
         #462523 100%
@@ -184,13 +184,70 @@ section {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    margin-bottom: 0px;
+}
+
+.hero-title-additional {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* --- ZŁOTA TABLICZKA (PLAKIETKA) --- */
+.hero-motto-plaque {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #E5C060 0%, #B88E2F 50%, #926F34 100%);
+    border: 1px solid #826324;
+    border-radius: 3px; 
+    box-shadow: 
+        0 5px 12px rgba(0, 0, 0, 0.15), 
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    
+    padding: 8px 40px;
+    margin: 20px auto 10px auto;
+}
+
+/* --- NAPIS WEWNĄTRZ TABLICZKI --- */
+.hero-motto {
+    font-family: 'Playfair Display', serif; /* Elegancka, szeryfowa czcionka ze wzoru */
+    font-size: 1.1rem;
+    font-weight: 400 !important;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.5px;
+    
+    /* Bardzo ciemny, głęboki brąz – dokładnie taki jak wygrawerowany napis na tabliczce */
+    color: #361A18; 
+    
+    /* Efekt graweru (letter-press): jasny refleks pod tekstem sprawia, że wygląda jak wtłoczony w metal */
+    text-shadow: 0.5px 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+/* --- RESPONSYWNOŚĆ (TELEFONY) --- */
+@media (max-width: 768px) {
+    .hero-motto-plaque {
+        padding: 10px 25px;
+        margin: 25px auto;
+        max-width: 90%; /* Żeby tabliczka nie wyszła poza ekran smartfona */
+    }
+    
+    .hero-motto {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
 }
 
 .hero-logo-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .hero-logo {
@@ -241,7 +298,8 @@ section {
 
 /* KARTA O STAŁEJ WYSOKOŚCI */
 .service-card {
-    background: #ffffff;
+    background: #ffffff83;
+    backdrop-filter: blur(5px);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -513,7 +571,7 @@ section {
 }
 
 .card {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.429);
     backdrop-filter: blur(3px);
     border-radius: 15px;
     /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
@@ -523,14 +581,16 @@ section {
     transition: transform 0.3s ease;
 }
 
-/* .card:hover {
+.card:hover {
     transform: translateY(-10px);
-} */
+}
 
 .card-content {
     padding: 30px;
     flex-grow: 1;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* .card img {
@@ -540,33 +600,33 @@ section {
 } */
 
 .card img {
-    width: 15rem;          /* Stała szerokość kółka (możesz zwiększyć np. do 250px jeśli wolisz większe) */
-    height: 15rem;         /* Taka sama wysokość, aby kółko nie było jajowate */
+    width: 90%;           /* Zdjęcie rozszerzy się maksymalnie do szerokości karty... */
+    max-width: 50rem;      /* ...ale nie przekroczy Twojego wymarzonego rozmiaru */
+    height: 100%;          /* KLUCZ: Wysokość dopasuje się SAMA do proporcji nowego zdjęcia */
+    max-height: 30rem;         /* Taka sama wysokość, aby kółko nie było jajowate */
     object-fit: cover;     /* Idealnie docięcie i wyśrodkowanie grafiki wewnątrz kółka */
-    border-radius: 50%;    /* Magiczna linia, która robi idealne kółko */
+    object-position: top center; /* Dodatkowe wyśrodkowanie, jeśli grafika jest większa niż kółko */
+    border-radius: 50px;    /* Magiczna linia, która robi idealne kółko */
     
     /* ELEGANCKIE ZDOBIENIE (Pasujące do stylu premium) */
     border: 2px solid var(--primary); /* Cienka, złota ramka wokół zdjęcia */
     
     /* WYŚRODKOWANIE OBRAZKA W KARCIE */
-    margin: 20px auto 0 auto;         /* Górny margines 20px, boki automatycznie (środek), dół 0 */
+    margin: 10px auto 50px auto;         /* Górny margines 20px, boki automatycznie (środek), dół 0 */
     
     /* SUBTELNY CIEŃ */
     box-shadow: 0 8px 20px rgba(70, 37, 35, 0.08); /* Miękki, brązowawy cień nadający trójwymiarowości */
     transition: transform 0.4s ease;
 }
 
-/* Opcjonalny, bardzo elegancki efekt: zdjęcie delikatnie się obraca lub powiększa po najechaniu na kartę */
-.card:hover img {
-    transform: scale(1.04);
-    border-color: var(--primary-dark); /* Złoto lekko ciemnieje przy najechaniu */
-}
+
 
 /* --- KONTAKT --- */
 .contact-container {
     max-width: 650px;
     margin: 0 auto;
-    background: #ffffff;
+    background: #ffffff6d;
+    backdrop-filter: blur(5px);
     padding: 50px;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
@@ -635,7 +695,6 @@ section {
 footer {
     padding: 80px 20px 40px 20px;
     text-align: center;
-    /* Usuwamy białe tło na rzecz przezroczystości lub bardzo delikatnego kremu */
     background: rgba(255, 252, 249, 0.6); 
     backdrop-filter: blur(5px);
     border-top: 1px solid rgba(191, 149, 63, 0.2);
@@ -643,7 +702,7 @@ footer {
 }
 
 .footer-content {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -653,7 +712,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-family: var(--font-body);
     font-size: 0.95rem;
 }
@@ -671,6 +730,49 @@ footer {
     text-align: center;
 }
 
+/* Kontener na dokumenty prawne (2 kolumny) */
+.footer-legal-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    text-align: left; /* Tekst prawny czyta się lepiej od lewej */
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(70, 37, 35, 0.1);
+    padding-top: 40px;
+}
+
+/* Pojedyncza kolumna (Impressum / Datenschutz) */
+.legal-static-block {
+    flex: 1;
+    min-width: 280px;
+}
+
+.legal-static-block h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #462523;
+    border-bottom: 1px solid rgba(191, 149, 63, 0.2);
+    padding-bottom: 5px;
+}
+
+.legal-static-block h4, 
+.legal-static-block h5 {
+    font-size: 0.95rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #462523;
+}
+
+.legal-static-block p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #61403e; /* Nieco jaśniejszy brąz dla lepszej czytelności tekstu ciągłego */
+    margin-bottom: 12px;
+}
+
+/* Prawa autorskie na samym dole */
 .footer-bottom {
     margin-top: 40px;
     padding-top: 20px;
@@ -680,9 +782,61 @@ footer {
     letter-spacing: 1px;
 }
 
-/* --- RESPONSYWNOŚĆ --- */
-@media (max-width: 768px) {
-    .hero-title { font-size: 2.6rem; }
+.legal-static-block p {
+    white-space: pre-line;
+}
+
+/* --- RESPONSYWNOŚĆ (TELEFONY) --- */
+@media (max-width: 800px) {
+    .nav-links {
+        display: none !important; /* Ukrywa menu tekstowe (Home, Usługi...) na telefonie */
+    }
+
+    .navbar {
+        flex-direction: column;   /* Wymusza układ pionowy dla elementów w nawigacji */
+        padding: 20px 0;
+    }
+
+    .social-icons {
+        /* 1. KLUCZOWY RESET: Odcinamy pozycjonowanie z komputera */
+        position: relative !important; 
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        
+        /* 2. ŚRODKOWANIE W POZIOMIE */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;  /* Środkuje ikonki między sobą */
+        align-items: center;     
+        gap: 25px;                /* Komfortowy odstęp na palec na telefonie */
+        padding: 10px 20px;
+        margin: 0px auto 0 auto; /* Środkuje cały kontener (kapsułkę) na ekranie telefonu */
+        width: fit-content;       /* Kapsułka zwęża się idealnie do szerokości ikonek */
+        
+        /* 3. WYGLĄD: Jeśli chcesz zachować białą kapsułkę ze zdjęcia, zostaw te 3 linie poniżej: */
+        background: transparent !important; 
+        border-radius: 50px !important;
+        backdrop-filter: blur(5px) !important;
+    }
+
+    .hero-title {
+        font-size: 4.5rem !important;
+    }
+
+    .hero-logo {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .footer-legal-container {
+        flex-direction: column; /* Na telefonach układa tekst jeden pod drugim */
+        gap: 30px;
+    }
+    
+    footer {
+        padding: 50px 20px 30px 20px;
+    }
     .hero-flower-img { max-width: 100%; }
     .section-heading { font-size: 2.2rem; }
     #services, #posts, #contact { padding: 60px 5%; }

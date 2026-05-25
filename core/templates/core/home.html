@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
@@ -55,9 +56,16 @@
             {% endif %} {% endcomment %}
 
             <h1 class="hero-title">{{ company.name }}</h1>
+            {% if company.name_additional %}
+                <span class="hero-title-additional">{{ company.name_additional }}</span>
+            {% endif %} 
 
             <div class="hero-logo-container">
                 <img src="{% static 'core/img/znak.png' %}" class="hero-logo" alt="Logo">
+            </div>
+
+            <div class="hero-motto-plaque">
+                <p class="hero-motto">{{ company.motto }}</p>
             </div>
 
             <p class="hero-subtitle">{{ company.description }}</p>
@@ -165,18 +173,63 @@
     <footer>
         <div class="footer-content">
             <div class="footer-info">
-                <!-- 1. Numer telefonu -->
-                <span><i class="fa-solid fa-phone"></i> {{ company.phone }}</span>
+                {% if company.phone %}
+                    <span><i class="fa-solid fa-phone"></i> {{ company.phone }}</span>
+                {% endif %}
+                {% if company.email %}
+                    <span><i class="fa-solid fa-envelope"></i> {{ company.email }}</span>
+                {% endif %}
+                {% if company.street and company.postal_code and company.city %}
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i> 
+                        {{ company.street }}, {{ company.postal_code }} {{ company.city }}
+                    </span>
+                {% endif %}
+            </div>
+            
+            <div class="footer-legal-container">
                 
-                <!-- 2. Adres mailowy -->
-                <span><i class="fa-solid fa-envelope"></i> {{ company.email }}</span>
+                <div class="legal-static-block">
+                    <h3>Impressum</h3>
+                    <p><strong>{{ company.name }}</strong></p>
+                    <p>{{ company.street }}<br>{{ company.postal_code }} {{ company.city }}</p>
+                    <p><strong>Vertreten durch:</strong> {{ company.owner_name }}</p>
+                    <p><strong>Kontakt:</strong><br>Telefon: {{ company.phone }}<br>E-Mail: {{ company.email }}</p>
+                    
+                    {% if company.ust_id %}
+                        <p><strong>Umsatzsteuer-ID:</strong><br>USt-IdNr: {{ company.ust_id }}</p>
+                    {% endif %}
+                    {% if company.ust_id_information %}
+                        <p>{{ company.ust_id_information }}</p>
+                    {% endif %}
+                    {% if company.liability_contents %}
+                        <h5>Haftung für Inhalte</h5>
+                        <p>{{ company.liability_contents }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="legal-static-block">
+                    <h3>Datenschutzerklärung</h3>
+                    
+                    <h4>1. Einleitung und Überblick</h4>
+                    <p>{{ company.privacy_intro }}</p>
+                    
+                    <h4>2. Zweck der Datenverarbeitung</h4>
+                    <p>{{ company.privacy_purposes }}</p>
+                    
+                    <h4>3. Rechtsgrundlagen</h4>
+                    <p>{{ company.privacy_legal_grounds }}</p>
+                    
+                    {% if company.privacy_third_parties %}
+                        <h4>4. Datenübermittlung an Dritte</h4>
+                        <p>{{ company.privacy_third_parties }}</p>
+                    {% endif %}
+                </div>
                 
-                <!-- 3. Adres firmy -->
-                <span><i class="fa-solid fa-location-dot"></i> {{ company.address }}</span>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 {{ company.name }} | NIP: {{ company.ust_id }}</p>
+                <p>&copy; 2026 {{ company.name }} {% if company.ust_id %}| USt-IdNr: {{ company.ust_id }}{% endif %}</p>
             </div>
         </div>
     </footer>

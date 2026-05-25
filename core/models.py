@@ -7,6 +7,7 @@ class CompanyInfo(models.Model):
     # Dane firmy
     name = models.CharField(max_length=100, verbose_name="Nazwa firmy")
     name_additional = models.CharField(max_length=100, verbose_name="Dodatkowa nazwa firmy (np.Kosmetiksalon)", blank=True, null=True)
+    motto = models.CharField(max_length=200, verbose_name="Motto firmy", blank=True, null=True)
     owner_name = models.CharField(max_length=100, verbose_name="Imię właściciela", blank=True, null=True)
     description = models.TextField(verbose_name="Opis firmy")
     logo = models.ImageField(upload_to='company/', verbose_name="Logo firmy - nie używane", blank=True, null=True)
