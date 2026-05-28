@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    db:
+        image: postgres
+        environment:
+            - POSTGRES_DB=companywebsite
+            - POSTGRES_USER=companywebsite
+            - POSTGRES_PASSWORD=companywebsite123
+        web:
+            build: companywebsite
+            command: python manage.py runserver 0.0.0.0:8000
+            volumes:

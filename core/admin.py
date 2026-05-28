@@ -34,6 +34,10 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'description', 'created_at',]
     list_filter = ['created_at',]
     
+    def has_add_permission(self, request):
+        # Pozwól dodać tylko wtedy, gdy w bazie jest 0 postów
+        return Post.objects.count() == 0
+    
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name',]
