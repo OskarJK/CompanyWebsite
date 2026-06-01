@@ -652,14 +652,19 @@ section {
     margin: 25px 0;
     text-align: left;
     cursor: pointer;
+    position: relative; /* DODANE: Tworzy punkt odniesienia dla pozycji inputa */
 }
 
-/* Ukrywamy domyślny, brzydki checkbox */
+/* Ukrywamy domyślny checkbox, ale dajemy mu rozmiar i kładziemy na wierzchu */
 .privacy-container input[type="checkbox"] {
     position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+    top: 2px;
+    left: 0;
+    width: 18px;    /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
+    height: 18px;   /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
+    opacity: 0;     /* Jest w 100% przezroczysty, więc go nie widać */
+    cursor: pointer;
+    z-index: 2;     /* DODANE: Leży na samym wierzchu. Telefon teraz go "widzi" i potrafi do niego przypiąć dymek walidacji! */
 }
 
 /* Stylizacja nowego, ładnego labela, który udaje checkbox */
@@ -701,7 +706,6 @@ section {
     background: #c5a880;
     border-color: #c5a880;
 }
-
 
 .privacy-container label::after {
     content: "";

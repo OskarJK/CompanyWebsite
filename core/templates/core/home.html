@@ -19,7 +19,7 @@
         <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#services">Usługi</a>
-            <a href="#posts">Aktualności</a>
+            <a href="#posts">Kosmetyki</a>
             <a href="#contact">Kontakt</a>
         </div>
 
@@ -158,6 +158,15 @@
         <div class="contact-container">
             <form method="post" action="#contact">
                 {% csrf_token %}
+                {% if messages %}
+                    <div class="django-messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}               
                 
                 <p>
                     <label for="{{ form.name.id_for_label }}">IMIĘ:</label>
@@ -210,15 +219,6 @@
                 </div>
 
                 <button type="submit" class="cta-outline">Wyślij wiadomość</button>
-                {% if messages %}
-                    <div class="django-messages">
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
             </form>
         </div>
     </section>
