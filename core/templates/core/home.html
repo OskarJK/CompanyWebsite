@@ -79,7 +79,7 @@
                 <div class="service-card open-modal" 
                     data-title="{{ service.title }}" 
                     data-description="{{ service.description }}" 
-                    data-price="{{ service.price }} €"
+                    data-price="{% if service.price_to %}{{ service.price }} € - {{ service.price_to }} €{% else %}{{ service.price }} €{% endif %}"
                     data-image="{% if service.image %}{{ service.image.url }}{% else %}{% static 'core/img/default-treatment.jpg' %}{% endif %}">
                     
                     <div class="service-card-image">
@@ -99,7 +99,14 @@
                         </div>
                         
                         <div class="service-card-footer">
-                            <span class="service-card-price">{{ service.price }} €</span>
+
+                            <span class="service-card-price">
+                                {% if service.price_to %}
+                                    {{ service.price }} € - {{ service.price_to }} €
+                                {% else %}
+                                    {{ service.price }} €
+                                {% endif %}
+                            </span>                          
                             {% if company.treatwell_url %}
                                 <a href="{{ company.treatwell_url }}" target="_blank" class="service-card-btn" onclick="event.stopPropagation();">Umów wizytę</a>
                             {% else %}

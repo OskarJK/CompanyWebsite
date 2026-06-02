@@ -90,6 +90,7 @@ class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nazwa usługi")
     description = models.TextField(verbose_name="Opis zabiegu")
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena (€)")
+    price_to = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena do (€) - opcjonalnie", blank=True, null=True)
     image = models.ImageField(upload_to='services/', verbose_name="Zdjęcie usługi", blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Kategoria")
 
