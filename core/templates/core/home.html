@@ -13,7 +13,12 @@
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body
+    {% if company.logo %} 
+        style="background-image: url('{{ company.logo.url }}');" 
+    {% else %} 
+        style="background-image: url('{% static 'core/img/background_main.png' %}');" 
+    {% endif %}>
     <nav class="navbar">
         <!-- Kontener na linki (środek) -->
         <div class="nav-links">
@@ -236,13 +241,32 @@
                 {% if company.phone %}
                     <span><i class="fa-solid fa-phone"></i> {{ company.phone }}</span>
                 {% endif %}
+                
                 {% if company.email %}
                     <span><i class="fa-solid fa-envelope"></i> {{ company.email }}</span>
                 {% endif %}
+                
                 {% if company.street and company.postal_code and company.city %}
                     <span>
-                        <i class="fa-solid fa-location-dot"></i> 
-                        {{ company.street }}, {{ company.postal_code }} {{ company.city }}
+                        {% if company.map_url %}
+                            <a href="{{ company.map_url }}" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+                                <i class="fa-solid fa-location-dot"></i> {{ company.street }}, {{ company.postal_code }} {{ company.city }}
+                            </a>
+                        {% else %}
+                            <i class="fa-solid fa-location-dot"></i> {{ company.street }}, {{ company.postal_code }} {{ company.city }}
+                        {% endif %}
+                    </span>
+                {% endif %}
+
+                {% if company.street_2 and company.postal_code_2 and company.city_2 %}
+                    <span>
+                        {% if company.map_url_2 %}
+                            <a href="{{ company.map_url_2 }}" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+                                <i class="fa-solid fa-location-dot"></i> {{ company.street_2 }}, {{ company.postal_code_2 }} {{ company.city_2 }}
+                            </a>
+                        {% else %}
+                            <i class="fa-solid fa-location-dot"></i> {{ company.street_2 }}, {{ company.postal_code_2 }} {{ company.city_2 }}
+                        {% endif %}
                     </span>
                 {% endif %}
             </div>

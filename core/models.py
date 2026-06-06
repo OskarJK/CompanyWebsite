@@ -10,15 +10,23 @@ class CompanyInfo(models.Model):
     motto = models.CharField(max_length=200, verbose_name="Motto firmy", blank=True, null=True)
     owner_name = models.CharField(max_length=100, verbose_name="Imię właściciela", blank=True, null=True)
     description = models.TextField(verbose_name="Opis firmy")
-    logo = models.ImageField(upload_to='company/', verbose_name="Logo firmy - nie używane", blank=True, null=True)
+    logo = models.ImageField(upload_to='company/', verbose_name="Zdjęcie na stronie głównej - background (opcjonalnie)", blank=True, null=True)
     
     # Dane kontaktowe i prawne (ważne dla rynku niemieckiego)
     street = models.CharField(max_length=100, verbose_name="Ulica", blank=True, null=True)
     postal_code = models.CharField(max_length=20, verbose_name="Kod pocztowy", blank=True, null=True)
     city = models.CharField(max_length=100, verbose_name="Miasto", blank=True, null=True)
     country = models.CharField(max_length=100, verbose_name="Kraj", blank=True, null=True)
+    map_url = models.URLField(max_length=500, blank=True, null=True, verbose_name="Link do Google Maps (Główny adres)")
     phone = models.CharField(max_length=30, verbose_name="Telefon", blank=True, null=True)
     email = models.EmailField(verbose_name="Adres e-mail", blank=True, null=True)
+    
+    # --- DRUGI ADRES FIRMY ---
+    street_2 = models.CharField(max_length=100, verbose_name="Ulica (drugi adres)", blank=True, null=True)
+    postal_code_2 = models.CharField(max_length=20, verbose_name="Kod pocztowy (drugi adres)", blank=True, null=True)
+    city_2 = models.CharField(max_length=100, verbose_name="Miasto (drugi adres)", blank=True, null=True)
+    country_2 = models.CharField(max_length=100, verbose_name="Kraj (drugi adres)", blank=True, null=True)
+    map_url_2 = models.URLField(max_length=500, blank=True, null=True, verbose_name="Link do Google Maps (drugi adres)")
     
     # Obowiązkowe w niemieckim Impressum!
     ust_id = models.CharField(max_length=50, verbose_name="USt-IdNr (NIP) - nieobowiązkowe do wpisania", blank=True, null=True)

@@ -17,11 +17,10 @@ body {
     margin: 0;
     font-family: var(--font-body);
     color: var(--text);
-    background-image: url('../img/background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     line-height: 1.6;
 }
 
@@ -162,7 +161,7 @@ section {
         #462523 0%,
         #cb9b51 22%,
         #f6db7a 45%,
-        #ffed7b 50%,
+        #c9b640 50%,
         #f6e27a 55%,
         #cb9b51 78%,
         #462523 100%
@@ -812,6 +811,17 @@ footer {
     color: var(--primary);
     width: 20px;
     text-align: center;
+}
+
+.footer-map-link {
+    color: inherit;      
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-map-link:hover {
+    text-decoration: underline;
+    opacity: 0.8;
 }
 
 /* Kontener na dokumenty prawne (2 kolumny) */
