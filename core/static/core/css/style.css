@@ -1,989 +1,1050 @@
 /* --- GŁÓWNA NAWIGACJA --- */
 
 html {
-    scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
 }
 
 :root {
-    --primary: #c5a059;
-    --primary-dark: #ab781a;
-    --bg-powder: #fdf6f4;
-    --text: #5c5c5c;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Montserrat', sans-serif;
+  --primary: #c5a059;
+  --primary-dark: #ab781a;
+  --bg-powder: #fdf6f4;
+  --text: #5c5c5c;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Montserrat", sans-serif;
 }
 
 body {
-    margin: 0;
-    font-family: var(--font-body);
-    color: var(--text);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    line-height: 1.6;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  line-height: 1.6;
 }
 
 /* --- GŁÓWNA NAWIGACJA --- */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0;
-    background: transparent;
-    z-index: 2000;
-    box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background: transparent;
+  z-index: 2000;
+  box-sizing: border-box;
 }
 
 .navbar a {
-
-    text-decoration: none;
-    color: #462523;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    transition: 0.3s;
+  text-decoration: none;
+  color: #462523;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+  transition: 0.3s;
 }
 
-
 .navbar a:hover {
-    color: var(--primary);
-    transform: translateY(-2px);
-} 
+  color: var(--primary);
+  transform: translateY(-2px);
+}
 
 .nav-links {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px;
 }
 
 /* --- SOCIAL MEDIA (Wewnątrz Navbaru) --- */
 .social-icons {
-    position: absolute;      
-    right: 25px;             
-    top: 50%;                
-    transform: translateY(-50%); 
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50px;
-    backdrop-filter: blur(5px);
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
 }
 
 .social-icons a {
-    color: var(--primary);
-    font-size: 1.5rem;
-    transition: 0.3s ease;
+  color: var(--primary);
+  font-size: 1.5rem;
+  transition: 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: var(--primary-dark);
-    transform: scale(1.2);
+  color: var(--primary-dark);
+  transform: scale(1.2);
 }
 
 /* Styl dla przycisku Treatwell */
 .cta-treatwell {
-    display: flex;
-    align-items: center;
-    padding: 6px 10px;
-    margin-top: 0;
-    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    color: #462523 !important;
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem !important;
-    border-radius: 25px;
-    transition: 0.3s ease;
-    font-family: var(--font-body);
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  margin-top: 0;
+  background: linear-gradient(135deg,
+      #bf953f,
+      #fcf6ba,
+      #b38728,
+      #fbf5b7,
+      #aa771c);
+  color: #462523 !important;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem !important;
+  border-radius: 25px;
+  transition: 0.3s ease;
+  font-family: var(--font-body);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .cta-treatwell:hover {
-    transform: translateY(-2px) scale(1.05) !important;
-    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
-    filter: brightness(1.1);
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
+  filter: brightness(1.1);
 }
 
 .cta-treatwell i {
-    margin-right: 6px;
-    font-size: 1.1rem;
+  margin-right: 6px;
+  font-size: 1.1rem;
 }
 
 section {
-    scroll-margin-top: 40px; 
+  scroll-margin-top: 40px;
 }
-
 
 /* --- HERO SECTION --- */
 #hero {
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 80px 20px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
 }
 
 .hero-overlay {
-    background: transparent;
-    max-width: 900px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: transparent;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-overlay .cta-outline {
-    font-weight: 400;
-    background: rgba(255, 255, 255, 0.442);
-    backdrop-filter: blur(2px);
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.442);
+  backdrop-filter: blur(2px);
 }
 
 .hero-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 5rem;
-    font-weight: 400;
-    margin: 20px 0;
-    line-height: 1.1;
-    padding-bottom: 0.1em;
-    background-image: linear-gradient(
-    to right,
-        #462523 0%,
-        #cb9b51 22%,
-        #f6db7a 45%,
-        #c9b640 50%,
-        #f6e27a 55%,
-        #cb9b51 78%,
-        #462523 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0px;
+  font-family: "Great Vibes", cursive;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 20px 0;
+  line-height: 1.1;
+  padding-bottom: 0.1em;
+  background-image: linear-gradient(to right,
+      #462523 0%,
+      #cb9b51 22%,
+      #f6db7a 45%,
+      #c9b640 50%,
+      #f6e27a 55%,
+      #cb9b51 78%,
+      #462523 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0px;
 }
 
 .hero-title-additional {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: var(--primary);
-    margin-bottom: 10px;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--primary);
+  margin-bottom: 10px;
 }
 
 /* --- ZŁOTA TABLICZKA (PLAKIETKA) --- */
 .hero-motto-plaque {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #E5C060 0%, #B88E2F 50%, #926F34 100%);
-    border: 1px solid #826324;
-    border-radius: 3px; 
-    box-shadow: 
-        0 5px 12px rgba(0, 0, 0, 0.15), 
-        inset 0 1px 2px rgba(255, 255, 255, 0.5);
-    
-    padding: 8px 40px;
-    margin: 20px auto 10px auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e5c060 0%, #b88e2f 50%, #926f34 100%);
+  border: 1px solid #826324;
+  border-radius: 3px;
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+
+  padding: 8px 40px;
+  margin: 20px auto 10px auto;
 }
 
 /* --- NAPIS WEWNĄTRZ TABLICZKI --- */
 .hero-motto {
-    font-family: 'Playfair Display', serif; /* Elegancka, szeryfowa czcionka ze wzoru */
-    font-size: 1.1rem;
-    font-weight: 400 !important;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 0.5px;
-    
-    /* Bardzo ciemny, głęboki brąz – dokładnie taki jak wygrawerowany napis na tabliczce */
-    color: #361A18; 
-    
-    /* Efekt graweru (letter-press): jasny refleks pod tekstem sprawia, że wygląda jak wtłoczony w metal */
-    text-shadow: 0.5px 1px 0px rgba(255, 255, 255, 0.3);
+  font-family: "Playfair Display", serif;
+  /* Elegancka, szeryfowa czcionka ze wzoru */
+  font-size: 1.1rem;
+  font-weight: 400 !important;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.5px;
+
+  /* Bardzo ciemny, głęboki brąz – dokładnie taki jak wygrawerowany napis na tabliczce */
+  color: #361a18;
+
+  /* Efekt graweru (letter-press): jasny refleks pod tekstem sprawia, że wygląda jak wtłoczony w metal */
+  text-shadow: 0.5px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 .hero-logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
 }
 
 .hero-logo {
-    max-width: 800px;
-    height: auto;
+  max-width: 800px;
+  height: auto;
 }
 
 .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text);
-    max-width: 700px;
-    margin-bottom: 40px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  max-width: 700px;
+  margin-bottom: 40px;
 }
 
 /* --- SEKCJE OGÓLNE --- */
-#services, #posts, #contact {
-    padding: 50px 10%;
+#services,
+#posts,
+#contact {
+  padding: 50px 10%;
 }
 
 .section-heading {
-    font-family: var(--font-heading);
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 2.8rem;
-    color: #4a4a4a;
+  font-family: var(--font-heading);
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.8rem;
+  color: #4a4a4a;
 }
 
 /* --- USŁUGI: STAŁA WIELKOŚĆ KART I POPUP --- */
 .section-subheading {
-    text-align: center;
-    font-family: var(--font-body);
-    color: #888;
-    margin-top: -30px;
-    margin-bottom: 50px;
-    font-size: 1.1rem;
+  text-align: center;
+  font-family: var(--font-body);
+  color: #888;
+  margin-top: -30px;
+  margin-bottom: 50px;
+  font-size: 1.1rem;
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* KARTA O STAŁEJ WYSOKOŚCI */
 .service-card {
-    background: #ffffff83;
-    backdrop-filter: blur(5px);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(191, 149, 63, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* Karta staje się w całości klikalna */
-    height: 460px;   /* GWARANCJA STAŁEJ WYSOKOŚCI DLA KAŻDEJ KARTY */
+  background: #ffffff83;
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(191, 149, 63, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+  /* Karta staje się w całości klikalna */
+  height: 460px;
+  /* GWARANCJA STAŁEJ WYSOKOŚCI DLA KAŻDEJ KARTY */
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(191, 149, 63, 0.12);
-    border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(191, 149, 63, 0.12);
+  border-color: var(--primary);
 }
 
 .service-card-image {
-    width: 100%;
-    height: 200px; /* Stała wysokość zdjęcia w karcie */
-    overflow: hidden;
+  width: 100%;
+  height: 200px;
+  /* Stała wysokość zdjęcia w karcie */
+  overflow: hidden;
 }
 
 .service-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    overflow: hidden; /* Odcina wszystko, co wystaje poza sztywne ramy */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  /* Odcina wszystko, co wystaje poza sztywne ramy */
 }
 
 .service-card-title {
-    margin: 0 0 10px 0;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #462523;
+  margin: 0 0 10px 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #462523;
 }
 
 /* MECHANIZM UCINANIA TEKSTU DO 3 LINIJEK */
 .service-card-text-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .service-card-text {
-    margin: 0;
-    font-family: var(--font-body);
-    color: #777;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    
-    /* Magiczne linie CSS ucinające tekst i dające trzy kropki (...) */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Maksymalna liczba linii tekstu */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin: 0;
+  font-family: var(--font-body);
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+  /* Magiczne linie CSS ucinające tekst i dające trzy kropki (...) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Maksymalna liczba linii tekstu */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Przycisk 'więcej' pod uciętym tekstem */
 .more-link {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 5px;
-    font-weight: 600;
-    transition: 0.2s;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .service-card:hover .more-link {
-    color: var(--primary-dark);
+  color: var(--primary-dark);
 }
 
 .service-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid rgba(70, 37, 35, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(70, 37, 35, 0.05);
 }
 
 .service-card-price {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary);
 }
 
 .service-card-btn {
-    background: rgba(255, 255, 255, 0.4);
-    color: #462523;
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid rgba(70, 37, 35, 0.15);
-    border-radius: 6px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.3s;
+  background: rgba(255, 255, 255, 0.4);
+  color: #462523;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid rgba(70, 37, 35, 0.15);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 .service-card-btn:hover {
-    background: #c4a56b;
+  background: #c4a56b;
 }
 
 /* --- STYLE DLA OKNA MODALNEGO (POPUP) --- */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(146, 136, 135, 0.4); /* Kolor tła poza oknem */
-    backdrop-filter: blur(4px);       /* Efekt rozmycia za oknem */
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(146, 136, 135, 0.4);
+  /* Kolor tła poza oknem */
+  backdrop-filter: blur(4px);
+  /* Efekt rozmycia za oknem */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 /* Klasa aktywująca popup */
 .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-card {
-    background: #ffffff;
-    width: 90%;
-    max-width: 550px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    position: relative;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(191, 149, 63, 0.15);
+  background: #ffffff;
+  width: 90%;
+  max-width: 550px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(191, 149, 63, 0.15);
 }
 
 .modal-overlay.active .modal-card {
-    transform: scale(1);
+  transform: scale(1);
 }
 
 /* Przycisk zamknięcia X */
 .modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    font-size: 2rem;
-    width: 36px;
-    height: 36px;
-    line-height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    color: #462523;
-    transition: 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 2rem;
+  width: 36px;
+  height: 36px;
+  line-height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  color: #462523;
+  transition: 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-close-btn:hover {
-    background: #462523;
-    color: #ffffff;
+  background: #462523;
+  color: #ffffff;
 }
 
 .modal-image-box {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
 }
 
 .modal-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .modal-content-box {
-    padding: 30px;
+  padding: 30px;
 }
 
 #modalTitle {
-    margin: 0 0 15px 0;
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: #462523;
+  margin: 0 0 15px 0;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: #462523;
 }
 
 /* Obszar z opisem – jeśli tekst jest kosmicznie długi, pojawi się wewnątrz mały scroll */
 .modal-scroll-desc {
-    max-height: 150px;
-    overflow-y: auto;
-    margin-bottom: 25px;
-    padding-right: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 25px;
+  padding-right: 5px;
 }
 
 /* Stylizacja paska przewijania w modalu */
 .modal-scroll-desc::-webkit-scrollbar {
-    width: 4px;
+  width: 4px;
 }
+
 .modal-scroll-desc::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
+  background: var(--primary);
+  border-radius: 10px;
 }
 
 #modalDescription {
-    margin: 0;
-    font-family: var(--font-body);
-    color: #555;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    white-space: pre-line; /* Zachowuje entery wpisane w panelu admina */
+  margin: 0;
+  font-family: var(--font-body);
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  /* Zachowuje entery wpisane w panelu admina */
 }
 
 .modal-footer-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(70, 37, 35, 0.08);
-    padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(70, 37, 35, 0.08);
+  padding-top: 20px;
 }
 
 #modalPrice {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
 }
 
 @media (max-width: 768px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { height: 440px; }
-    .modal-card { width: 95%; }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    height: 440px;
+  }
+
+  .modal-card {
+    width: 95%;
+  }
 }
 
 .category-title {
-    font-family: var(--font-heading);
-    color: var(--primary);
-    text-align: center;
-    margin: 40px 0 20px 0;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  font-family: var(--font-heading);
+  color: var(--primary);
+  text-align: center;
+  margin: 40px 0 20px 0;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* --- KARTY POSTÓW --- */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
 }
 
 .card {
-    background: #ffffff6d;
-    backdrop-filter: blur(3px);
-    border-radius: 15px;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
+  background: #ffffff6d;
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .card-content {
-    padding: 30px;
-    flex-grow: 1;
-    text-align: left;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+  padding: 30px;
+  flex-grow: 1;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 .card-content * {
-    max-width: 100%;
-    box-sizing: border-box;
+  max-width: 100%;
+  box-sizing: border-box;
 }
-
-
-
 
 .card img {
-    width: 90%;
-    max-width: 50rem;
-    height: 100%;
-    max-height: 30rem;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 50px;
-    
-    /* ELEGANCKIE ZDOBIENIE (Pasujące do stylu premium) */
-    border: 2px solid var(--primary);
-    
-    /* WYŚRODKOWANIE OBRAZKA W KARCIE */
-    margin: 10px auto 50px auto;
-    
-    /* SUBTELNY CIEŃ */
-    box-shadow: 0 8px 20px rgba(70, 37, 35, 0.08);
-    transition: transform 0.4s ease;
+  width: 90%;
+  max-width: 50rem;
+  height: 100%;
+  max-height: 30rem;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50px;
+
+  /* ELEGANCKIE ZDOBIENIE (Pasujące do stylu premium) */
+  border: 2px solid var(--primary);
+
+  /* WYŚRODKOWANIE OBRAZKA W KARCIE */
+  margin: 10px auto 50px auto;
+
+  /* SUBTELNY CIEŃ */
+  box-shadow: 0 8px 20px rgba(70, 37, 35, 0.08);
+  transition: transform 0.4s ease;
 }
-
-
 
 /* --- KONTAKT --- */
 .contact-container {
-    max-width: 650px;
-    margin: 0 auto;
-    background: #ffffff6d;
-    backdrop-filter: blur(5px);
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--bg-powder);
+  max-width: 650px;
+  margin: 0 auto;
+  background: #ffffff6d;
+  backdrop-filter: blur(5px);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--bg-powder);
 }
 
 #contact form p {
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 #contact label {
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: bold;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
 }
 
-#contact input, #contact textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px;
-    border: 1px solid #e0d0cd;
-    border-radius: 10px;
-    font-family: var(--font-body);
-    background-color: var(--bg-powder);
-    color: var(--text);
-    transition: 0.3s;
-    outline: none;
-    /* Blokada rozmiaru pola tekstowego, aby zachować estetykę projektu. Użytkownicy mogą nadal przewijać zawartość, ale nie mogą zmieniać rozmiaru pola. */
-    resize: none;
+#contact input,
+#contact textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #e0d0cd;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  background-color: var(--bg-powder);
+  color: var(--text);
+  transition: 0.3s;
+  outline: none;
+  /* Blokada rozmiaru pola tekstowego, aby zachować estetykę projektu. Użytkownicy mogą nadal przewijać zawartość, ale nie mogą zmieniać rozmiaru pola. */
+  resize: none;
 }
 
-#contact input:focus, #contact textarea:focus {
-    border-color: var(--primary);
-    background-color: #fff;
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.1);
+#contact input:focus,
+#contact textarea:focus {
+  border-color: var(--primary);
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(197, 160, 89, 0.1);
 }
 
 /* Container dla checkboxa i tekstu */
 
 .privacy-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 25px 0;
-    text-align: left;
-    cursor: pointer;
-    position: relative; /* DODANE: Tworzy punkt odniesienia dla pozycji inputa */
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 25px 0;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  /* DODANE: Tworzy punkt odniesienia dla pozycji inputa */
 }
 
 /* Ukrywamy domyślny checkbox, ale dajemy mu rozmiar i kładziemy na wierzchu */
 .privacy-container input[type="checkbox"] {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 18px;    /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
-    height: 18px;   /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
-    opacity: 0;     /* Jest w 100% przezroczysty, więc go nie widać */
-    cursor: pointer;
-    z-index: 2;     /* DODANE: Leży na samym wierzchu. Telefon teraz go "widzi" i potrafi do niego przypiąć dymek walidacji! */
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 18px;
+  /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
+  height: 18px;
+  /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
+  opacity: 0;
+  /* Jest w 100% przezroczysty, więc go nie widać */
+  cursor: pointer;
+  z-index: 2;
+  /* DODANE: Leży na samym wierzchu. Telefon teraz go "widzi" i potrafi do niego przypiąć dymek walidacji! */
 }
 
 /* Stylizacja nowego, ładnego labela, który udaje checkbox */
 .privacy-container label {
-    position: relative;
-    padding-left: 30px;
-    color: #c5a880;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    user-select: none;
-    line-height: 1.4;
+  position: relative;
+  padding-left: 30px;
+  color: #c5a880;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.4;
 }
 
 /* Tworzymy nasz własny kwadracik (wyłączony) */
 .privacy-container label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #c5a880;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.4);
-    transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #c5a880;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease-in-out;
 }
 
 /* Efekt po najechaniu myszką na checkbox */
-.privacy-container:hover input[type="checkbox"] ~ label::before {
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 5px rgba(197, 168, 128, 0.5);
+.privacy-container:hover input[type="checkbox"]~label::before {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px rgba(197, 168, 128, 0.5);
 }
 
 /* Stylizacja checkboxa */
-.privacy-container input[type="checkbox"]:checked ~ label::before {
-    background: #c5a880;
-    border-color: #c5a880;
+.privacy-container input[type="checkbox"]:checked~label::before {
+  background: #c5a880;
+  border-color: #c5a880;
 }
 
 .privacy-container label::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg) scale(0);
-    transition: transform 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease-in-out;
 }
 
 /* Pokazujemy ptaszka po zaznaczeniu */
-.privacy-container input[type="checkbox"]:checked ~ label::after {
-    transform: rotate(45deg) scale(1);
+.privacy-container input[type="checkbox"]:checked~label::after {
+  transform: rotate(45deg) scale(1);
 }
 
 /* Stylizacja w przypadku błędu walidacji */
-.privacy-container input[type="checkbox"]:focus ~ label::before {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.3);
+.privacy-container input[type="checkbox"]:focus~label::before {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.3);
 }
 
 /* Stylizacja komunikatu o pomyślnej wysyłce */
 .django-messages {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    padding: 15px;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.1rem;
-    /* Delikatna animacja pojawiania się */
-    animation: fadeIn 0.5s ease-in-out;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  /* Delikatna animacja pojawiania się */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cta-outline {
-    display: block;
-    padding: 15px 40px;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-    text-align: center;
-    background: transparent;
-    width: fit-content;
-    margin: 0 auto;
-    font-family: var(--font-body);
+  display: block;
+  padding: 15px 40px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+  text-align: center;
+  background: transparent;
+  width: fit-content;
+  margin: 0 auto;
+  font-family: var(--font-body);
 }
 
 .cta-outline:hover {
-    background: var(--primary);
-    color: white;
+  background: var(--primary);
+  color: white;
 }
 
 /* --- FOOTER --- */
 footer {
-    padding: 80px 20px 40px 20px;
-    text-align: center;
-    background: rgba(255, 252, 249, 0.6); 
-    backdrop-filter: blur(5px);
-    border-top: 1px solid rgba(191, 149, 63, 0.2);
-    color: #462523; /* Twój ciemny brąz */
+  padding: 80px 20px 40px 20px;
+  text-align: center;
+  background: rgba(255, 252, 249, 0.6);
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(191, 149, 63, 0.2);
+  color: #462523;
+  /* Twój ciemny brąz */
 }
 
 .footer-content {
-    max-width: 1100px;
-    margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .footer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
 }
 
 .footer-info span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .footer-info i {
-    color: var(--primary);
-    width: 20px;
-    text-align: center;
+  color: var(--primary);
+  width: 20px;
+  text-align: center;
 }
 
 .footer-map-link {
-    color: inherit;      
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .footer-map-link:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
 /* Kontener na dokumenty prawne (2 kolumny) */
 .footer-legal-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    text-align: left; /* Tekst prawny czyta się lepiej od lewej */
-    margin-bottom: 40px;
-    border-top: 1px solid rgba(70, 37, 35, 0.1);
-    padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  text-align: left;
+  /* Tekst prawny czyta się lepiej od lewej */
+  margin-bottom: 40px;
+  border-top: 1px solid rgba(70, 37, 35, 0.1);
+  padding-top: 40px;
 }
 
 /* Pojedyncza kolumna (Impressum / Datenschutz) */
 .legal-static-block {
-    flex: 1;
-    min-width: 280px;
+  flex: 1;
+  min-width: 280px;
 }
 
 .legal-static-block h3 {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #462523;
-    border-bottom: 1px solid rgba(191, 149, 63, 0.2);
-    padding-bottom: 5px;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #462523;
+  border-bottom: 1px solid rgba(191, 149, 63, 0.2);
+  padding-bottom: 5px;
 }
 
-.legal-static-block h4, 
+.legal-static-block h4,
 .legal-static-block h5 {
-    font-size: 0.95rem;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    color: #462523;
+  font-size: 0.95rem;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #462523;
 }
 
 .legal-static-block p {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #61403e; /* Nieco jaśniejszy brąz dla lepszej czytelności tekstu ciągłego */
-    margin-bottom: 12px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #61403e;
+  /* Nieco jaśniejszy brąz dla lepszej czytelności tekstu ciągłego */
+  margin-bottom: 12px;
 }
 
 /* Prawa autorskie na samym dole */
 .footer-bottom {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(70, 37, 35, 0.1);
-    font-size: 0.8rem;
-    color: #888;
-    letter-spacing: 1px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(70, 37, 35, 0.1);
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 1px;
 }
 
 .legal-static-block p {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 /* --- RESPONSYWNOŚĆ (TELEFONY) --- */
 @media (max-width: 800px) {
-    .nav-links {
-        display: none !important; /* Ukrywa menu tekstowe (Home, Usługi...) na telefonie */
-    }
+  .nav-links {
+    display: none !important;
+    /* Ukrywa menu tekstowe (Home, Usługi...) na telefonie */
+  }
 
-    .navbar {
-        flex-direction: column;   /* Wymusza układ pionowy dla elementów w nawigacji */
-        padding: 20px 0;
-    }
+  .navbar {
+    flex-direction: column;
+    /* Wymusza układ pionowy dla elementów w nawigacji */
+    padding: 20px 0;
+  }
 
-    .social-icons {
-        /* 1. KLUCZOWY RESET: Odcinamy pozycjonowanie z komputera */
-        position: relative !important; 
-        right: auto !important;
-        top: auto !important;
-        transform: none !important;
-        
-        /* 2. ŚRODKOWANIE W POZIOMIE */
-        display: flex;
-        flex-direction: row;
-        justify-content: center;  /* Środkuje ikonki między sobą */
-        align-items: center;     
-        gap: 25px;                /* Komfortowy odstęp na palec na telefonie */
-        padding: 10px 20px;
-        margin: 0px auto 0 auto; /* Środkuje cały kontener (kapsułkę) na ekranie telefonu */
-        width: fit-content;       /* Kapsułka zwęża się idealnie do szerokości ikonek */
-        
-        /* 3. WYGLĄD: Jeśli chcesz zachować białą kapsułkę ze zdjęcia, zostaw te 3 linie poniżej: */
-        background: transparent !important; 
-        border-radius: 50px !important;
-        backdrop-filter: blur(5px) !important;
-    }
+  .social-icons {
+    /* 1. KLUCZOWY RESET: Odcinamy pozycjonowanie z komputera */
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
 
-    .hero-title {
-        font-size: 4.5rem !important;
-    }
+    /* 2. ŚRODKOWANIE W POZIOMIE */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Środkuje ikonki między sobą */
+    align-items: center;
+    gap: 25px;
+    /* Komfortowy odstęp na palec na telefonie */
+    padding: 10px 20px;
+    margin: 0px auto 0 auto;
+    /* Środkuje cały kontener (kapsułkę) na ekranie telefonu */
+    width: fit-content;
+    /* Kapsułka zwęża się idealnie do szerokości ikonek */
 
-    .hero-logo {
-        max-width: 90%;
-        height: auto;
-    }
+    /* 3. WYGLĄD: Jeśli chcesz zachować białą kapsułkę ze zdjęcia, zostaw te 3 linie poniżej: */
+    background: transparent !important;
+    border-radius: 50px !important;
+    backdrop-filter: blur(5px) !important;
+  }
 
-    .hero-motto-plaque {
-        padding: 10px 25px;
-        margin: 25px auto;
-        max-width: 90%; /* Żeby tabliczka nie wyszła poza ekran smartfona */
-    }
-    
-    .hero-motto {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
-/* 1. Siatka - kafelki jeden pod drugim */
-    .services-grid { 
-        grid-template-columns: 1fr; 
-    }
+  .hero-title {
+    font-size: 4.5rem !important;
+  }
 
-    /* 2. Karta - elastyczna wysokość, żeby tekst się nie ucinał */
-    .service-card {
-        height: auto !important;     /* Kluczowe: usuwamy sztywne 200px */
-        min-height: 350px;           /* Minimalna wysokość, żeby wyglądały dobrze */
-        padding-bottom: 10px;
-    }
-    
-    .service-card-image {
-        height: 180px;               /* Zdjęcie na telefonie */
-    }
+  .hero-logo {
+    max-width: 90%;
+    height: auto;
+  }
 
-    .modal-card {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: none !important;
-        max-height: none !important;
-        border-radius: 0 !important;
-        
-        display: flex;          /* Włączamy flexa na cały modal */
-        flex-direction: column; /* Układamy elementy pionowo */
-    }
+  .hero-motto-plaque {
+    padding: 10px 25px;
+    margin: 25px auto;
+    max-width: 90%;
+    /* Żeby tabliczka nie wyszła poza ekran smartfona */
+  }
 
-    /* Obszar z treścią, który ma się scrollować */
-    .modal-content-box {
-        flex: 1;                /* Zabiera całe dostępne miejsce */
-        overflow-y: auto;       /* Tylko tutaj będzie przewijanie */
-        padding-bottom: 20px;
-    }
+  .hero-motto {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
 
-    /* Stopka z ceną i przyciskiem - będzie zawsze na dole */
-    .modal-footer-box {
-        background: #fff;       /* Tło pod przyciskiem */
-        padding: 20px;
-        border-top: 1px solid rgba(70, 37, 35, 0.08);
-        flex-shrink: 0;         /* Nie pozwala stopce się zmniejszyć */
-    }
+  /* 1. Siatka - kafelki jeden pod drugim */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .footer-legal-container {
-        flex-direction: column; /* Na telefonach układa tekst jeden pod drugim */
-        gap: 30px;
-    }
-    
-    footer {
-        padding: 50px 20px 30px 20px;
-    }
-    .hero-flower-img { max-width: 100%; }
-    .section-heading { font-size: 2.2rem; }
-    #services, #posts, #contact { padding: 60px 5%; }
+  /* 2. Karta - elastyczna wysokość, żeby tekst się nie ucinał */
+  .service-card {
+    height: auto !important;
+    /* Kluczowe: usuwamy sztywne 200px */
+    min-height: 350px;
+    /* Minimalna wysokość, żeby wyglądały dobrze */
+    padding-bottom: 10px;
+  }
+
+  .service-card-image {
+    height: 180px;
+    /* Zdjęcie na telefonie */
+  }
+
+  .modal-card {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+
+    display: flex;
+    /* Włączamy flexa na cały modal */
+    flex-direction: column;
+    /* Układamy elementy pionowo */
+  }
+
+  /* Obszar z treścią, który ma się scrollować */
+  .modal-content-box {
+    flex: 1;
+    /* Zabiera całe dostępne miejsce */
+    overflow-y: auto;
+    /* Tylko tutaj będzie przewijanie */
+    padding-bottom: 20px;
+  }
+
+  /* Stopka z ceną i przyciskiem - będzie zawsze na dole */
+  .modal-footer-box {
+    background: #fff;
+    /* Tło pod przyciskiem */
+    padding: 20px;
+    border-top: 1px solid rgba(70, 37, 35, 0.08);
+    flex-shrink: 0;
+    /* Nie pozwala stopce się zmniejszyć */
+  }
+
+  .footer-legal-container {
+    flex-direction: column;
+    /* Na telefonach układa tekst jeden pod drugim */
+    gap: 30px;
+  }
+
+  footer {
+    padding: 50px 20px 30px 20px;
+  }
+
+
+  .section-heading {
+    font-size: 2.2rem;
+  }
+
+  #services,
+  #posts,
+  #contact {
+    padding: 60px 5%;
+  }
 }
