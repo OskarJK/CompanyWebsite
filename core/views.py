@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from core.forms import ContactForm
+from django.db.models import Prefetch
 
 # Create your views here.
 from .models import CompanyInfo, ContactMessage, Service, Post, Category
@@ -11,18 +12,15 @@ def home(request):
     # 1. Obsługa wysyłania formularza (POST)
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        is_privacy_accepted = request.POST.get('privacy_accepted') == 'on'
-        
-        if form.is_valid() and is_privacy_accepted:
-            contact = form.save(commit=False)
-            contact.privacy_accepted = True
-            contact.save()
+    
+        if form.is_valid():
+            form.save()
 
             # WYSYŁANIE MAILA PRZEZ GMAIL
             # Wyciągamy bezpiecznie oczyszczone dane z formularza
-            user_name = form.cleaned_data.get('name', 'Nie podano')
-            user_email = form.cleaned_data.get('email', 'Nie podano')
-            user_message = form.cleaned_data.get('message', '')
+            user_name = form.cleaned_data['name']
+            user_email = form.cleaned_data['email']
+            user_message = form.cleaned_data['message']
             
             # Formatujemy treść wiadomości e-mail
             subject = f"Nowa wiadomość od {user_name} (Salon Kosmetyczny)"
@@ -83,7 +81,7 @@ def home(request):
                 print(f"Błąd wysyłania maila przez SMTP: {e}")
             # --------------------------------------------
             messages.success(request, "Dziękujemy! Twoja wiadomość została wysłana pomyślnie.")
-            return redirect('home') # Sukces -> pełne odświeżenie i czysty formularz
+            return redirect('home')
         
         # Jeśli są błędy (np. zły mail), kod przechodzi dalej. 
         # NIE ROBIMY przekierowania (redirect), dzięki czemu błędy i wpisany tekst zostają w formularzu!
@@ -94,14 +92,12 @@ def home(request):
         
     # Pobieramy dane z bazy
     company = CompanyInfo.objects.first() # Zakładamy, że masz jeden rekord z danymi firmy
-    services = Service.objects.all()
-    categories = Category.objects.prefetch_related('services').all()
+    categories = Category.objects.prefetch_related(Prefetch('service_set', queryset=Service.objects.order_by('order'))).all()
     posts = Post.objects.all().order_by('-created_at') # Najnowsze posty pierwsze
     
     context = {
         'company': company,
-        'services': services,
-        'categories': categories,
+        'categories': categories,  # kategorie z usługami w środku
         'posts': posts,
         'form': form,
     }

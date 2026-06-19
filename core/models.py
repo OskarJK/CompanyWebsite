@@ -69,6 +69,13 @@ class CompanyInfo(models.Model):
         blank=True, 
         null=True
     )
+    
+    #Pliki cookies
+    privacy_cookies = models.TextField(
+        verbose_name="Polityka prywatności - Cookies",
+        blank=True,
+        null=True
+    )
 
     
     # Social Media
@@ -86,10 +93,12 @@ class CompanyInfo(models.Model):
         
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nazwa kategorii")
+    order = models.PositiveIntegerField(default=0, verbose_name="Kolejność wyświetlania - im niższa, tym wyżej na stronie")
 
     class Meta:
         verbose_name = "Kategoria"
         verbose_name_plural = "Kategorie"
+        ordering = ['order']
 
     def __str__(self):
         return self.name
@@ -101,6 +110,7 @@ class Service(models.Model):
     price_to = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cena do (€) - opcjonalnie", blank=True, null=True)
     image = models.ImageField(upload_to='services/', verbose_name="Zdjęcie usługi", blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Kategoria")
+    order = models.PositiveIntegerField(default=0, verbose_name="Kolejność wyświetlania w kategorii - niższa liczba = pierwsze w kolejności")
 
     def __str__(self):
         return self.title
@@ -108,7 +118,7 @@ class Service(models.Model):
     class Meta:
         verbose_name = "Usługa"
         verbose_name_plural = "Usługi"
-        ordering = ['category']
+        ordering = ['category', 'order']
 
 class Post(models.Model):
     title = models.CharField(max_length=200, verbose_name="Nazwa kosmetyków których używamy")

@@ -1,5 +1,11 @@
 /* --- GŁÓWNA NAWIGACJA --- */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth !important;
 }
@@ -92,12 +98,14 @@ body {
   align-items: center;
   padding: 6px 10px;
   margin-top: 0;
-  background: linear-gradient(135deg,
-      #bf953f,
-      #fcf6ba,
-      #b38728,
-      #fbf5b7,
-      #aa771c);
+  background: linear-gradient(
+    135deg,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
   color: #462523 !important;
   text-decoration: none;
   font-weight: 500;
@@ -158,14 +166,16 @@ section {
   margin: 20px 0;
   line-height: 1.1;
   padding-bottom: 0.1em;
-  background-image: linear-gradient(to right,
-      #462523 0%,
-      #cb9b51 22%,
-      #f6db7a 45%,
-      #c9b640 50%,
-      #f6e27a 55%,
-      #cb9b51 78%,
-      #462523 100%);
+  background-image: linear-gradient(
+    to right,
+    #462523 0%,
+    #cb9b51 22%,
+    #f6db7a 45%,
+    #c9b640 50%,
+    #f6e27a 55%,
+    #cb9b51 78%,
+    #462523 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -201,17 +211,12 @@ section {
 /* --- NAPIS WEWNĄTRZ TABLICZKI --- */
 .hero-motto {
   font-family: "Playfair Display", serif;
-  /* Elegancka, szeryfowa czcionka ze wzoru */
   font-size: 1.1rem;
   font-weight: 400 !important;
   text-align: center;
   margin: 0;
   letter-spacing: 0.5px;
-
-  /* Bardzo ciemny, głęboki brąz – dokładnie taki jak wygrawerowany napis na tabliczce */
   color: #361a18;
-
-  /* Efekt graweru (letter-press): jasny refleks pod tekstem sprawia, że wygląda jak wtłoczony w metal */
   text-shadow: 0.5px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
@@ -250,6 +255,50 @@ section {
   color: #4a4a4a;
 }
 
+/* --- ZAKŁADKI --- */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: #462523;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: rgba(197, 160, 89, 0.1);
+}
+
+.tab-btn.active {
+  background: #c5a059;
+  color: #462523;
+  border-color: transparent;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
 /* --- USŁUGI: STAŁA WIELKOŚĆ KART I POPUP --- */
 .section-subheading {
   text-align: center;
@@ -262,11 +311,12 @@ section {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  justify-content: center;
   box-sizing: border-box;
 }
 
@@ -284,9 +334,7 @@ section {
     transform 0.3s ease,
     box-shadow 0.3s ease;
   cursor: pointer;
-  /* Karta staje się w całości klikalna */
   height: 460px;
-  /* GWARANCJA STAŁEJ WYSOKOŚCI DLA KAŻDEJ KARTY */
 }
 
 .service-card:hover {
@@ -298,7 +346,6 @@ section {
 .service-card-image {
   width: 100%;
   height: 200px;
-  /* Stała wysokość zdjęcia w karcie */
   overflow: hidden;
 }
 
@@ -314,7 +361,6 @@ section {
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
-  /* Odcina wszystko, co wystaje poza sztywne ramy */
 }
 
 .service-card-title {
@@ -325,7 +371,6 @@ section {
   color: #462523;
 }
 
-/* MECHANIZM UCINANIA TEKSTU DO 3 LINIJEK */
 .service-card-text-container {
   flex-grow: 1;
   display: flex;
@@ -340,17 +385,13 @@ section {
   color: #777;
   font-size: 0.9rem;
   line-height: 1.5;
-
-  /* Magiczne linie CSS ucinające tekst i dające trzy kropki (...) */
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /* Maksymalna liczba linii tekstu */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Przycisk 'więcej' pod uciętym tekstem */
 .more-link {
   display: inline-block;
   font-size: 0.8rem;
@@ -373,13 +414,16 @@ section {
   margin-top: auto;
   padding-top: 10px;
   border-top: 1px solid rgba(70, 37, 35, 0.05);
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .service-card-price {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--primary);
+  white-space: nowrap;
 }
 
 .service-card-btn {
@@ -407,9 +451,7 @@ section {
   width: 100%;
   height: 100%;
   background: rgba(146, 136, 135, 0.4);
-  /* Kolor tła poza oknem */
   backdrop-filter: blur(4px);
-  /* Efekt rozmycia za oknem */
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -419,7 +461,6 @@ section {
   transition: opacity 0.3s ease;
 }
 
-/* Klasa aktywująca popup */
 .modal-overlay.active {
   opacity: 1;
   pointer-events: auto;
@@ -442,7 +483,6 @@ section {
   transform: scale(1);
 }
 
-/* Przycisk zamknięcia X */
 .modal-close-btn {
   position: absolute;
   top: 15px;
@@ -489,7 +529,6 @@ section {
   color: #462523;
 }
 
-/* Obszar z opisem – jeśli tekst jest kosmicznie długi, pojawi się wewnątrz mały scroll */
 .modal-scroll-desc {
   max-height: 150px;
   overflow-y: auto;
@@ -497,7 +536,6 @@ section {
   padding-right: 5px;
 }
 
-/* Stylizacja paska przewijania w modalu */
 .modal-scroll-desc::-webkit-scrollbar {
   width: 4px;
 }
@@ -514,7 +552,6 @@ section {
   font-size: 0.95rem;
   line-height: 1.6;
   white-space: pre-line;
-  /* Zachowuje entery wpisane w panelu admina */
 }
 
 .modal-footer-box {
@@ -528,8 +565,9 @@ section {
 #modalPrice {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--primary);
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
@@ -546,16 +584,6 @@ section {
   }
 }
 
-.category-title {
-  font-family: var(--font-heading);
-  color: var(--primary);
-  text-align: center;
-  margin: 40px 0 20px 0;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
 /* --- KARTY POSTÓW --- */
 .grid-container {
   display: grid;
@@ -567,46 +595,45 @@ section {
   background: #ffffff6d;
   backdrop-filter: blur(3px);
   border-radius: 15px;
-  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
   transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
 }
 
 .card-content {
-  padding: 30px;
-  flex-grow: 1;
+  flex: 1;
+  padding: 0;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-.card-content * {
-  max-width: 100%;
-  box-sizing: border-box;
+.card-content h3 {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #462523;
+  margin-bottom: 30px;
 }
 
 .card img {
-  width: 90%;
-  max-width: 50rem;
-  height: 100%;
-  max-height: 30rem;
+  flex: 1;
+  width: 50%;
+  max-width: 450px;
+  height: 350px;
   object-fit: cover;
   object-position: top center;
-  border-radius: 50px;
-
-  /* ELEGANCKIE ZDOBIENIE (Pasujące do stylu premium) */
+  border-radius: 20px;
   border: 2px solid var(--primary);
-
-  /* WYŚRODKOWANIE OBRAZKA W KARCIE */
-  margin: 10px auto 50px auto;
-
-  /* SUBTELNY CIEŃ */
+  margin: 0;
   box-shadow: 0 8px 20px rgba(70, 37, 35, 0.08);
   transition: transform 0.4s ease;
 }
@@ -651,7 +678,6 @@ section {
   color: var(--text);
   transition: 0.3s;
   outline: none;
-  /* Blokada rozmiaru pola tekstowego, aby zachować estetykę projektu. Użytkownicy mogą nadal przewijać zawartość, ale nie mogą zmieniać rozmiaru pola. */
   resize: none;
 }
 
@@ -672,26 +698,19 @@ section {
   text-align: left;
   cursor: pointer;
   position: relative;
-  /* DODANE: Tworzy punkt odniesienia dla pozycji inputa */
 }
 
-/* Ukrywamy domyślny checkbox, ale dajemy mu rozmiar i kładziemy na wierzchu */
 .privacy-container input[type="checkbox"] {
   position: absolute;
   top: 2px;
   left: 0;
   width: 18px;
-  /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
   height: 18px;
-  /* DODANE: Taki sam rozmiar jak Twój ładny kwadracik */
   opacity: 0;
-  /* Jest w 100% przezroczysty, więc go nie widać */
   cursor: pointer;
   z-index: 2;
-  /* DODANE: Leży na samym wierzchu. Telefon teraz go "widzi" i potrafi do niego przypiąć dymek walidacji! */
 }
 
-/* Stylizacja nowego, ładnego labela, który udaje checkbox */
 .privacy-container label {
   position: relative;
   padding-left: 30px;
@@ -705,7 +724,6 @@ section {
   line-height: 1.4;
 }
 
-/* Tworzymy nasz własny kwadracik (wyłączony) */
 .privacy-container label::before {
   content: "";
   position: absolute;
@@ -720,13 +738,13 @@ section {
 }
 
 /* Efekt po najechaniu myszką na checkbox */
-.privacy-container:hover input[type="checkbox"]~label::before {
+.privacy-container:hover input[type="checkbox"] ~ label::before {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 5px rgba(197, 168, 128, 0.5);
 }
 
 /* Stylizacja checkboxa */
-.privacy-container input[type="checkbox"]:checked~label::before {
+.privacy-container input[type="checkbox"]:checked ~ label::before {
   background: #c5a880;
   border-color: #c5a880;
 }
@@ -744,13 +762,22 @@ section {
   transition: transform 0.2s ease-in-out;
 }
 
-/* Pokazujemy ptaszka po zaznaczeniu */
-.privacy-container input[type="checkbox"]:checked~label::after {
+.privacy-container input[type="checkbox"]:checked ~ label::after {
   transform: rotate(45deg) scale(1);
 }
 
+.privacy-link {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.privacy-link:hover {
+  color: var(--primary-dark);
+}
+
 /* Stylizacja w przypadku błędu walidacji */
-.privacy-container input[type="checkbox"]:focus~label::before {
+.privacy-container input[type="checkbox"]:focus ~ label::before {
   outline: none;
   box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.3);
 }
@@ -760,6 +787,7 @@ section {
   margin-bottom: 20px;
 }
 
+/* Poprawne, VS CODE nie widzi */
 .alert-success {
   background-color: #d4edda;
   color: #155724;
@@ -769,7 +797,6 @@ section {
   text-align: center;
   font-weight: 500;
   font-size: 1.1rem;
-  /* Delikatna animacja pojawiania się */
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -814,7 +841,6 @@ footer {
   backdrop-filter: blur(5px);
   border-top: 1px solid rgba(191, 149, 63, 0.2);
   color: #462523;
-  /* Twój ciemny brąz */
 }
 
 .footer-content {
@@ -863,7 +889,6 @@ footer {
   justify-content: space-between;
   gap: 40px;
   text-align: left;
-  /* Tekst prawny czyta się lepiej od lewej */
   margin-bottom: 40px;
   border-top: 1px solid rgba(70, 37, 35, 0.1);
   padding-top: 40px;
@@ -897,8 +922,8 @@ footer {
   font-size: 0.85rem;
   line-height: 1.6;
   color: #61403e;
-  /* Nieco jaśniejszy brąz dla lepszej czytelności tekstu ciągłego */
   margin-bottom: 12px;
+  white-space: pre-line;
 }
 
 /* Prawa autorskie na samym dole */
@@ -911,125 +936,191 @@ footer {
   letter-spacing: 1px;
 }
 
-.legal-static-block p {
-  white-space: pre-line;
-}
-
 /* --- RESPONSYWNOŚĆ (TELEFONY) --- */
 @media (max-width: 800px) {
   .nav-links {
-    display: none !important;
-    /* Ukrywa menu tekstowe (Home, Usługi...) na telefonie */
+    display: none;
   }
 
   .navbar {
     flex-direction: column;
-    /* Wymusza układ pionowy dla elementów w nawigacji */
     padding: 20px 0;
   }
 
   .social-icons {
-    /* 1. KLUCZOWY RESET: Odcinamy pozycjonowanie z komputera */
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-
-    /* 2. ŚRODKOWANIE W POZIOMIE */
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* Środkuje ikonki między sobą */
     align-items: center;
     gap: 25px;
-    /* Komfortowy odstęp na palec na telefonie */
     padding: 10px 20px;
     margin: 0px auto 0 auto;
-    /* Środkuje cały kontener (kapsułkę) na ekranie telefonu */
     width: fit-content;
-    /* Kapsułka zwęża się idealnie do szerokości ikonek */
-
-    /* 3. WYGLĄD: Jeśli chcesz zachować białą kapsułkę ze zdjęcia, zostaw te 3 linie poniżej: */
-    background: transparent !important;
-    border-radius: 50px !important;
-    backdrop-filter: blur(5px) !important;
+    background: transparent;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+  }
+  .cta-treatwell {
+    font-size: 0.7rem !important;
+    padding: 5px 8px;
+    letter-spacing: 0.5px;
+  }
+  
+  .cta-outline {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 12px 20px;
   }
 
   .hero-title {
-    font-size: 4.5rem !important;
+    font-size: 3.5rem;
   }
 
   .hero-logo {
-    max-width: 90%;
-    height: auto;
+    max-width: 60%;
+  }
+
+  .hero-logo-container {
+    margin-bottom: 0;
   }
 
   .hero-motto-plaque {
-    padding: 10px 25px;
-    margin: 25px auto;
-    max-width: 90%;
-    /* Żeby tabliczka nie wyszła poza ekran smartfona */
+    max-width: 85%;
+    padding: 8px 20px;
   }
 
   .hero-motto {
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-size: 0.9rem;
   }
 
-  /* 1. Siatka - kafelki jeden pod drugim */
-  .services-grid {
-    grid-template-columns: 1fr;
+  .hero-subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
   }
 
-  /* 2. Karta - elastyczna wysokość, żeby tekst się nie ucinał */
+  #hero {
+    padding: 100px 15px 60px 15px;
+  }
+
   .service-card {
     height: auto !important;
-    /* Kluczowe: usuwamy sztywne 200px */
     min-height: 350px;
-    /* Minimalna wysokość, żeby wyglądały dobrze */
     padding-bottom: 10px;
   }
 
   .service-card-image {
     height: 180px;
-    /* Zdjęcie na telefonie */
+  }
+
+  .tabs-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 20px 10px 20px;
+    gap: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  }
+  .tabs-container.scrolled {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%
+    );
+  }
+
+  .tabs-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    font-size: 0.7rem;
+    padding: 6px 12px; /* zmniejszone */
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .modal-card {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
+    max-height: 88vh !important;
     max-width: none !important;
-    max-height: none !important;
-    border-radius: 0 !important;
-
+    border-radius: 20px 20px 0 0 !important; /* zaokrąglenie tylko na górze */
     display: flex;
-    /* Włączamy flexa na cały modal */
     flex-direction: column;
-    /* Układamy elementy pionowo */
+    transform: translateY(100%); /* chowa się pod ekranem */
+    transition: transform 0.3s ease !important;
   }
 
-  /* Obszar z treścią, który ma się scrollować */
+  .modal-overlay.active .modal-card {
+    transform: translateY(0); /* wysuwa się od dołu */
+  }
+
+  .modal-image-box {
+    height: 200px;
+    flex-shrink: 0;
+  }
+
   .modal-content-box {
     flex: 1;
-    /* Zabiera całe dostępne miejsce */
     overflow-y: auto;
-    /* Tylko tutaj będzie przewijanie */
-    padding-bottom: 20px;
+    padding: 20px;
   }
 
-  /* Stopka z ceną i przyciskiem - będzie zawsze na dole */
+  .modal-scroll-desc {
+    max-height: none; /* usuń limit wysokości, scroll jest na całym content-box */
+  }
+
   .modal-footer-box {
-    background: #fff;
-    /* Tło pod przyciskiem */
-    padding: 20px;
-    border-top: 1px solid rgba(70, 37, 35, 0.08);
     flex-shrink: 0;
-    /* Nie pozwala stopce się zmniejszyć */
+    padding: 15px 20px;
+    background: #fff;
+    border-top: 1px solid rgba(70, 37, 35, 0.08);
+    gap: 15px;
+  }
+
+  .modal-close-btn {
+    top: 12px;
+    right: 12px;
+  }
+
+  .card {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .card img {
+    width: 90%;
+    height: auto;
+    max-height: 300px;
+    margin: 0 auto;
   }
 
   .footer-legal-container {
     flex-direction: column;
-    /* Na telefonach układa tekst jeden pod drugim */
     gap: 30px;
   }
 
@@ -1037,9 +1128,16 @@ footer {
     padding: 50px 20px 30px 20px;
   }
 
-
   .section-heading {
     font-size: 2.2rem;
+  }
+  .privacy-container label {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px; /* zmniejszone z 1px */
+  }
+
+  .contact-container {
+    padding: 30px 20px; /* zmniejszone z 50px */
   }
 
   #services,

@@ -12,8 +12,10 @@ class CompanyInfoAdmin(admin.ModelAdmin):
     
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'price', 'category']
+    list_display = ['id', 'order', 'title', 'price', 'category']
     list_filter = ['category']
+    list_editable = ['order']
+    ordering = ['order']
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -40,6 +42,8 @@ class PostAdmin(admin.ModelAdmin):
     
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name',]
+    list_display = ['id', 'order', 'name']
+    list_editable = ['order']
+    ordering = ['order']
     
 

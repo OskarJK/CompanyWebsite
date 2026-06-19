@@ -49,4 +49,27 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto'; // Przywraca przewijanie strony
     }
+    // --- ZAKŁADKI KATEGORII ---
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Usuń active ze wszystkich
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            // Dodaj active do klikniętego
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+    // --- GRADIENT ZAKŁADEK ---
+    const tabsContainer = document.querySelector('.tabs-container');
+    if (tabsContainer) {
+        tabsContainer.addEventListener('scroll', () => {
+            if (tabsContainer.scrollLeft > 10) {
+                tabsContainer.classList.add('scrolled');
+            } else {
+                tabsContainer.classList.remove('scrolled');
+            }
+        });
+    }
 });

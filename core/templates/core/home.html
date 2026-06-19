@@ -22,9 +22,9 @@
     <nav class="navbar">
         <!-- Kontener na linki (środek) -->
         <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#services">Usługi</a>
-            <a href="#posts">Kosmetyki</a>
+            <a href="#hero">Startseite</a>
+            <a href="#services">Dienstleistungen</a>
+            <a href="#posts">Kosmetik</a>
             <a href="#contact">Kontakt</a>
         </div>
 
@@ -32,7 +32,7 @@
         <div class="social-icons">
             {% if company.treatwell_url %}
                 <a href="{{ company.treatwell_url }}" target="_blank" class="cta-treatwell">
-                <i class="fa-solid fa-calendar-check"></i> Umów wizytę
+                <i class="fa-solid fa-calendar-check"></i> Termin vereinbaren
                 </a>
             {% endif %}
 
@@ -69,59 +69,74 @@
 
             <p class="hero-subtitle">{{ company.description }}</p>
 
-            <a href="#services" class="cta-outline">Odkryj usługi</a>
+            <a href="#services" class="cta-outline">Unsere Dienstleistungen</a>
 
         </div>
     </section>
 
 
     <section id="services">
-        <h2 class="section-heading">Nasze Usługi</h2>
-        <p class="section-subheading">Odkryj luksus i profesjonalną pielęgnację</p>
-        
-        <div class="services-grid">
-            {% for service in services %}
-                <div class="service-card open-modal" 
-                    data-title="{{ service.title }}" 
-                    data-description="{{ service.description }}" 
-                    data-price="{% if service.price_to %}{{ service.price }} € - {{ service.price_to }} €{% else %}{{ service.price }} €{% endif %}"
-                    data-image="{% if service.image %}{{ service.image.url }}{% else %}{% static 'core/img/default-treatment.jpg' %}{% endif %}">
-                    
-                    <div class="service-card-image">
-                        {% if service.image %}
-                            <img src="{{ service.image.url }}" alt="{{ service.title }}">
-                        {% else %}
-                            <img src="{% static 'core/img/default-treatment.jpg' %}" alt="Usługa">
-                        {% endif %}
-                    </div>
+        <h2 class="section-heading">Unsere Dienstleistungen</h2>
+        <p class="section-subheading">Entdecken Sie Luxus und professionelle Pflege</p>
 
-                    <div class="service-card-content">
-                        <h3 class="service-card-title">{{ service.title }}</h3>
-                        
-                        <div class="service-card-text-container">
-                            <p class="service-card-text">{{ service.description }}</p>
-                            <span class="more-link">więcej</span>
-                        </div>
-                        
-                        <div class="service-card-footer">
-
-                            <span class="service-card-price">
-                                {% if service.price_to %}
-                                    {{ service.price }} € - {{ service.price_to }} €
-                                {% else %}
-                                    {{ service.price }} €
-                                {% endif %}
-                            </span>                          
-                            {% if company.treatwell_url %}
-                                <a href="{{ company.treatwell_url }}" target="_blank" class="service-card-btn" onclick="event.stopPropagation();">Umów wizytę</a>
-                            {% else %}
-                                <a href="#contact" class="service-card-btn" onclick="event.stopPropagation();">Kontakt</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
+        <!-- ZAKŁADKI -->
+        <div class="tabs-container">
+            {% for category in categories %}
+                <button class="tab-btn {% if forloop.first %}active{% endif %}" 
+                        data-tab="category-{{ category.id }}">
+                    {{ category.name }}
+                </button>
             {% endfor %}
         </div>
+
+        <!-- ZAWARTOŚĆ ZAKŁADEK -->
+        {% for category in categories %}
+            <div class="tab-content {% if forloop.first %}active{% endif %}" 
+                id="category-{{ category.id }}">
+                <div class="services-grid">
+                    {% for service in category.service_set.all %}
+                        <div class="service-card open-modal" 
+                            data-title="{{ service.title }}" 
+                            data-description="{{ service.description }}" 
+                            data-price="{% if service.price_to %}{{ service.price }} € - {{ service.price_to }} €{% else %}{{ service.price }} €{% endif %}"
+                            data-image="{% if service.image %}{{ service.image.url }}{% else %}{% static 'core/img/default-treatment.jpg' %}{% endif %}">
+                            
+                            <div class="service-card-image">
+                                {% if service.image %}
+                                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="{% static 'core/img/default-treatment.jpg' %}" alt="Usługa">
+                                {% endif %}
+                            </div>
+
+                            <div class="service-card-content">
+                                <h3 class="service-card-title">{{ service.title }}</h3>
+                                
+                                <div class="service-card-text-container">
+                                    <p class="service-card-text">{{ service.description }}</p>
+                                    <span class="more-link">więcej</span>
+                                </div>
+                                
+                                <div class="service-card-footer">
+                                    <span class="service-card-price">
+                                        {% if service.price_to %}
+                                            {{ service.price }} € - {{ service.price_to }} €
+                                        {% else %}
+                                            {{ service.price }} €
+                                        {% endif %}
+                                    </span>
+                                    {% if company.treatwell_url %}
+                                        <a href="{{ company.treatwell_url }}" target="_blank" class="service-card-btn" onclick="event.stopPropagation();">Termin vereinbaren</a>
+                                    {% else %}
+                                        <a href="#contact" class="service-card-btn" onclick="event.stopPropagation();">Kontakt</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
 
         <div id="serviceModal" class="modal-overlay">
             <div class="modal-card">
@@ -130,16 +145,16 @@
                     <img id="modalImage" src="" alt="Usługa">
                 </div>
                 <div class="modal-content-box">
-                    <h3 id="modalTitle">Nazwa Usługi</h3>
+                    <h3 id="modalTitle"></h3>
                     <div class="modal-scroll-desc">
-                        <p id="modalDescription">Pełny opis usługi...</p>
+                        <p id="modalDescription"></p>
                     </div>
                     <div class="modal-footer-box">
                         <span id="modalPrice">0,00 €</span>
                         <a href="{% if company.treatwell_url %}{{ company.treatwell_url }}{% else %}#contact{% endif %}" 
                         id="modalActionBtn" 
                         target="_blank" 
-                        class="service-card-btn">Umów wizytę</a>
+                        class="service-card-btn">Termin vereinbaren</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +162,7 @@
     </section>
 
     <section id="posts">
-        <h2 class="section-heading">Kosmetyki których używamy</h2>
+        <h2 class="section-heading">Die Kosmetika, die wir verwenden</h2>
         <div class="grid-container">
             {% for post in posts %}
                 <div class="card">
@@ -165,7 +180,7 @@
     </section>
 
     <section id="contact">
-        <h2 class="section-heading">Masz pytania? Napisz do nas</h2>
+        <h2 class="section-heading">Haben Sie Fragen? Schreiben Sie uns</h2>
         
         <div class="contact-container">
             <form method="post" action="#contact">
@@ -181,7 +196,7 @@
                 {% endif %}               
                 
                 <p>
-                    <label for="{{ form.name.id_for_label }}">IMIĘ:</label>
+                    <label for="{{ form.name.id_for_label }}">VORNAME:</label>
                     {{ form.name }}
                     {% if form.name.errors %}
                         <ul class="errorlist">
@@ -205,7 +220,7 @@
                 </p>
 
                 <p>
-                    <label for="{{ form.message.id_for_label }}">WIADOMOŚĆ:</label>
+                    <label for="{{ form.message.id_for_label }}">Inhalt der Nachricht:</label>
                     {{ form.message }}
                     {% if form.message.errors %}
                         <ul class="errorlist">
@@ -225,12 +240,17 @@
                         oninvalid="this.setCustomValidity('Musisz zaakceptować politykę prywatności, aby wysłać wiadomość.')" 
                         oninput="this.setCustomValidity('')">
                     
-                    <label for="id_privacy_accepted">
-                        Zaakceptowano politykę prywatności (Datenschutz)
-                    </label>
+                <label for="id_privacy_accepted">
+                    Ich habe die 
+                    <a href="#datenschutz" class="privacy-link" 
+                    onclick="event.stopPropagation(); event.preventDefault(); document.getElementById('datenschutz').scrollIntoView({behavior: 'smooth'});">
+                    Datenschutzerklärung
+                    </a>
+                    zur Kenntnis genommen und akzeptiere sie.
+                </label>
                 </div>
 
-                <button type="submit" class="cta-outline">Wyślij wiadomość</button>
+                <button type="submit" class="cta-outline">Nachricht senden</button>
             </form>
         </div>
     </section>
@@ -297,9 +317,9 @@
                         <p>
                             Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
                             <a href="{{ company.odr_link }}" target="_blank" rel="noopener noreferrer">{{ company.odr_link }}</a>
-                            <p>{{ company.eu_streitschlichtung }}</p>
                         </p>
-                    {% endif %}       
+                        <p>{{ company.eu_streitschlichtung }}</p>
+                    {% endif %}                         
 
                     {% comment %} Haftung für Inhalte {% endcomment %}
                     {% if company.liability_contents %}
@@ -314,7 +334,7 @@
                     {% endif %}
                 </div>
 
-                <div class="legal-static-block">
+                <div class="legal-static-block" id="datenschutz">
                     <h3>Datenschutzerklärung</h3>
                     
                     <h4>Einleitung und Überblick</h4>
@@ -330,10 +350,15 @@
                         <h4>Datenübermittlung an Dritte</h4>
                         <p>{{ company.privacy_third_parties }}</p>
                     {% endif %}
+                    
+                    {% if company.privacy_cookies %}
+                        <h4>Cookies</h4>
+                        <p>{{ company.privacy_cookies }}</p>
+                    {% endif %}
                 </div>
                 
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2026 {{ company.name }} {% if company.ust_id %}| USt-IdNr: {{ company.ust_id }}{% endif %}</p>
             </div>
