@@ -1,15 +1,25 @@
-# Python
-__pycache__/
-*.pyc
-
 # Środowisko wirtualne
 env/
 venv/
 ENV/
 
-# Plik konfiguracyjny (Hasła i klucze)
+# Zmienne środowiskowe (hasła, klucze!)
 .env
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+
+# Pliki statyczne zebrane przez collectstatic
+staticfiles/
+
+# Media (zdjęcia wgrane przez admina)
+media/
+
+# Baza danych
+db.sqlite3
+
+# System
+.DS_Store
+Thumbs.db
