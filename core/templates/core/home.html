@@ -1,10 +1,33 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{{ company.name }}</title>
+    <title>{{ company.name }} - {{ company.name_additional }}</title>
+
+    <!-- META TAGI SEO -->
+    <meta name="description" content="{{ company.description|truncatechars:160 }}">
+    <meta name="keywords" content="Kosmetiksalon, Schönheitssalon, {{ company.city }}, Wimpernverlängerung, Augenbrauen, Gesichtsbehandlung">
+    <meta name="author" content="{{ company.name }}">
+
+    <!-- OPEN GRAPH (Facebook, WhatsApp, Instagram) -->
+    <meta property="og:title" content="{{ company.name }} - {{ company.name_additional }}">
+    <meta property="og:description" content="{{ company.description|truncatechars:160 }}">
+    <meta property="og:type" content="website">
+    {% if company.logo %}
+        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ company.logo.url }}">
+    {% endif %}
+    <meta property="og:locale" content="de_DE">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ company.name }}">
+    <meta name="twitter:description" content="{{ company.description|truncatechars:160 }}">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="{% static 'core/img/znak.png' %}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -185,6 +208,9 @@
         <div class="contact-container">
             <form method="post" action="#contact">
                 {% csrf_token %}
+                <div style="position: absolute; left: -9999px;">
+                    {{ form.website }}
+                </div>
                 {% if messages %}
                     <div class="django-messages">
                         {% for message in messages %}

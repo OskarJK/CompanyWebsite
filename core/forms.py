@@ -7,6 +7,9 @@ class ContactForm(forms.ModelForm):
         error_messages={'required': 'Sie müssen die Datenschutzbestimmungen akzeptieren.'}
     )
     
+    #Honeypot
+    website = forms.CharField(required=False, widget=forms.HiddenInput())
+    
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'message', 'privacy_accepted']
@@ -15,4 +18,10 @@ class ContactForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'placeholder': 'Deine E-Mail-Adresse'}),
             'message': forms.Textarea(attrs={'placeholder': 'Deine Nachricht', 'rows': 5}),
         }
+    def clean_website(self):
+        # Jeśli pole "website" jest wypełnione - to bot
+        website = self.cleaned_data.get('website')
+        if website:
+            raise forms.ValidationError("Spam wykryty.")
+        return website
         
