@@ -30,7 +30,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
@@ -126,9 +126,9 @@
                             
                             <div class="service-card-image">
                                 {% if service.image %}
-                                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                    <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy">
                                 {% else %}
-                                    <img src="{% static 'core/img/default-treatment.jpg' %}" alt="Usługa">
+                                    <img src="{% static 'core/img/default-treatment.jpg' %}" alt="Usługa", loading="lazy">
                                 {% endif %}
                             </div>
 
@@ -195,7 +195,7 @@
                     </div>
                     
                     {% if post.image %}
-                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy">
                     {% endif %}
                 </div>
             {% endfor %}            
