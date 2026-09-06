@@ -1,4 +1,4 @@
-# Beauty & Hair Salon Web Application
+# Beauty Salon Web Application
 
 A commercial full-stack web application built for a luxury beauty salon. The platform serves as a modern digital showcase and service catalog, allowing clients to browse treatments, view detailed pricing and durations, and initiate direct appointment bookings across mobile and desktop devices.
 
